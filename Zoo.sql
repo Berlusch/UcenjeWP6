@@ -3,41 +3,41 @@
 use master;
 go  
 --brišem bazu ako postoji
-drop database if exists edunovawp6;
+drop database if exists zoo;
 go
 
-create database edunovawp6;
+create database zoo;
 go
 
-use edunovawp6;
+use zoo;
 go
 
---create database zoo
---use zoo
+create table datum(
+sifra int not null primary key identity(1,1),
+datumrodjenja datetime not null,
+datumdolaska datetime not null,
+datumsmrti datetime not null);
 
-create table zivotinja(
-sifra int,
-vrsta varchar(50),
-ime varchar(50),
-djelatnik int,
-prostorija int,
-datum int
-);
-
-create table prostorija(
-sifra int,
-dimenzije varchar(30),
-maksbroj int,
-mjesto varchar(30)
-);
 
 create table djelatnik(
-sifra int,
-ime varchar(50),
-prezime varchar(50),
+sifra int not null primary key identity(1,1),
+ime varchar(50) not null,
+prezime varchar (50) not null,
 IBAN char(11)
 );
 
-create table datum(
-datumrodjenja datetime,
-datumdolaska datetime);
+create table prostorija(
+sifra int not null primary key identity(1,1),
+dimenzije varchar(30) not null,
+maksbroj int not null,
+mjesto varchar(30) not null
+);
+
+create table zivotinja(
+sifra int not null primary key identity(1,1),
+vrsta varchar(50) not null,
+ime varchar(50) not null,
+djelatnik int not null references djelatnik(sifra),
+prostorija int not null references prostorija(sifra),
+datum int not null references datum(sifra)
+);
