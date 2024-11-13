@@ -16,7 +16,8 @@ create table datum(
 sifra int not null primary key identity(1,1),
 datumrodjenja datetime not null,
 datumdolaska datetime not null,
-datumsmrti datetime not null);
+datumsmrti datetime not null
+);
 
 
 create table djelatnik(
