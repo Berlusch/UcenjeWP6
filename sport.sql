@@ -28,8 +28,8 @@ ime varchar(50) not null,
 prezime varchar(50) not null,
 datumrodjenja datetime not null,
 pozicija varchar(20) not null,
-brojdresa int(30) not null,
-klub varchar(50) not null references klub(sifra)
+brojdresa int not null,
+klub int not null references klub(sifra)
 );
 
 create table utakmica(
@@ -38,15 +38,15 @@ datum datetime not null,
 vrijeme datetime not null,
 lokacija varchar(50) not null,
 stadion varchar(50) not null,
-domaciklub varchar(50) not null references klub(sifra),
-gostujuciklub varchar(50) not null references klub(sifra),
+domaciklub varchar(50) not null,
+gostujuciklub varchar(50) not null
 );
 
 create table trener(
 sifra int not null primary key identity(1,1),
 ime varchar(50) not null,
 prezime varchar(50) not null,
-klub varchar(50) not null references klub(sifra),
+klub int not null references klub(sifra),
 nacionalnost varchar(50) not null,
 iskustvo varchar(50)
 );
