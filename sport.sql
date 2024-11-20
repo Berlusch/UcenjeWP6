@@ -28,7 +28,7 @@ ime varchar(50) not null,
 prezime varchar(50) not null,
 datumrodjenja datetime not null,
 pozicija varchar(20) not null,
-brojdresa int(30) not null,
+brojdresa int not null,
 klub varchar(50) not null references klub(sifra)
 );
 
