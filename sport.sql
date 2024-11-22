@@ -2,7 +2,7 @@
 --prebacujem se na master bazu
 use master;
 go  
---brišem bazu ako postoji
+--briï¿½em bazu ako postoji
 drop database if exists sport;
 go
 
@@ -29,7 +29,7 @@ prezime varchar(50) not null,
 datumrodjenja datetime not null,
 pozicija varchar(20) not null,
 brojdresa int not null,
-klub int not null references klub(sifra)
+klub varchar(50) not null references klub(sifra)
 );
 
 create table utakmica(
