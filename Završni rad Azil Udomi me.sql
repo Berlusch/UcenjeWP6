@@ -1,14 +1,6 @@
-﻿-- Ovo je SQL skripta
--- prebacujem se na master bazi
-use master;
-go -- dajemo mu vremena da se prebaci prije nego što ide dalje
--- brišem postojeću bazu ako postoji
-drop database if exists azil_udomi_me;
+﻿create database azil_udomi_me collate Croatian_CI_AS;
 go
--- kreiram novu bazu
-create database azil_udomi_me collate Croatian_CI_AS;
-go
--- pozicioniram se na bazu
+
 use azil_udomi_me;
 go
 
