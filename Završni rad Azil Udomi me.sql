@@ -1,8 +1,16 @@
-﻿--create database azil_udomi_me COLLATE Croatian_CI_AS;
---go
-
---use azil_udomi_me;
---go
+﻿-- Ovo je SQL skripta
+-- prebacujem se na master bazi
+use master;
+go -- dajemo mu vremena da se prebaci prije nego što ide dalje
+-- brišem postojeću bazu ako postoji
+drop database if exists azil_udomi_me;
+go
+-- kreiram novu bazu
+create database azil_udomi_me collate Croatian_CI_AS;
+go
+-- pozicioniram se na bazu
+use azil_udomi_me;
+go
 
 --TABLICA STATUS
 
@@ -18,14 +26,14 @@ sifra int not null primary key identity(1,1),
 brojcipa char(17) not null,
 ime varchar(20) not null,
 datum_rodjenja date not null,
-spol bit not null,
+spol varchar(10) not null,
+CONSTRAINT chk_spol CHECK (spol IN ('muški', 'ženski')),
 velicina nvarchar(7) not null,
 constraint chk_velicina check (velicina in('mali: do 5 kg','srednji: 5-25 kg', 'veliki: >25 kg')),
 boja nvarchar(6) not null,
 constraint chk_boja check (boja in('bijeli', 'crni', 'smeđi', 'šareni')),
 mojaprica varchar(300) not null,
 status int not null references status(sifra),
-constraint chk_status check (status in ('slobodan','udomljen','rezerviran','privremeni_smještaj')),
 kastracija bit not null,
 constraint chk_kastracija check(kastracija in('da','ne'))
 );
@@ -104,6 +112,4 @@ VALUES
 (10, 1, '2024-03-12', 'zaprimljen', 'Nema napomene'),
 (4, 9, '2024-06-22', 'u obradi', 'Nema napomene'),
 (6, 8, '2024-04-15', 'obrađen', 'odbijeno');
-
-
 
