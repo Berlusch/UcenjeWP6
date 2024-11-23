@@ -21,8 +21,13 @@ invalid bit not null
 create table slike(
 sifra int not null primary key identity(1,1),
 zaposlenik int not null references zaposlenici(sifra),
-redni broj int not null
+rednibroj int not null
 putanja varchar(30) not null
 );
 
-
+INSERT INTO zaposlenici(ime, prezime, placa) VALUES
+('Ivana', 'Ivić', 7500.00),
+('Marko', 'Marić', 8500.00),
+('Ana', 'Horvat', 9200.00);
+insert into slike(zaposlenik) values
+(1, 2)
