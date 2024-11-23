@@ -1,4 +1,10 @@
-﻿create database azil_udomi_me collate Croatian_CI_AS;
+﻿use master;
+go -- dajemo mu vremena da se prebaci prije nego što ide dalje
+-- brišem postojeću bazu ako postoji
+drop database if exists azil_udomi_me;
+go
+
+create database azil_udomi_me collate Croatian_CI_AS;
 go
 
 use azil_udomi_me;
@@ -11,6 +17,20 @@ sifra int not null primary key identity(1,1),
 naziv varchar(30) not null
 );
 
+--TABLICA VELIČINA
+
+create table velicina(
+sifra int not null primary key identity(1,1),
+naziv varchar(30)
+);
+
+--TABLICA BOJA
+
+create table boja(
+sifra int not null primary key identity(1,1),
+naziv varchar(10)
+);
+
 --TABLICA PSI
 
 create table psi(
@@ -20,14 +40,11 @@ ime varchar(20) not null,
 datum_rodjenja date not null,
 spol varchar(10) not null,
 CONSTRAINT chk_spol CHECK (spol IN ('muški', 'ženski')),
-velicina nvarchar(7) not null,
-constraint chk_velicina check (velicina in('mali: do 5 kg','srednji: 5-25 kg', 'veliki: >25 kg')),
-boja nvarchar(6) not null,
-constraint chk_boja check (boja in('bijeli', 'crni', 'smeđi', 'šareni')),
+velicina int(10) not null references velicina(sifra),
+boja int(10) not null references boja(sifra),
 mojaprica varchar(300) not null,
-status int not null references status(sifra),
+status int(10) not null references status(sifra),
 kastracija bit not null,
-constraint chk_kastracija check(kastracija in('da','ne'))
 );
 
 --TABLICA UDOMITELJI
@@ -57,6 +74,17 @@ insert into status(naziv) values
 ('rezerviran'),
 ('slobodan'),
 ('privremeni smještaj');
+
+insert into velicina(naziv) values
+('mali: do 5 kg'),
+('srednji: 5-25 kg'),
+('veliki: >25 kg');
+
+insert into boja(naziv) values
+('bijeli'),
+('crni'),
+('smeđi'),
+('šareni');
 
 insert into psi(brojcipa, ime, datum_rodjenja, spol, velicina, boja, mojaprica, kastracija, status) VALUES
 ('HR123456789012345', 'Max', '2010-08-15', 'muški', 'srednji: 5-25 kg', 'bijeli', 'Max je energičan pas koji voli igru i šetnje.', 'da', 'slobodan'),
@@ -94,14 +122,14 @@ VALUES
 
 INSERT INTO upiti (pas, udomitelj, datum_upita, status_upita, napomene)
 VALUES
-(3, 7, '2024-06-15', 'zaprimljen', 'Nema napomene'),
-(9, 2, '2024-08-10', 'u obradi', 'Nema napomene'),
+(3, 7, '2024-06-15', 'zaprimljen', 'nema napomene'),
+(9, 2, '2024-08-10', 'u obradi', 'nema napomene'),
 (1, 5, '2024-07-05', 'obrađen', 'udomljenje'),
-(7, 4, '2024-04-20', 'zaprimljen', 'Nema napomene'),
-(5, 6, '2024-01-25', 'u obradi', 'Nema napomene'),
-(8, 3, '2024-02-10', 'zaprimljen', 'Nema napomene'),
+(7, 4, '2024-04-20', 'zaprimljen', 'nema napomene'),
+(5, 6, '2024-01-25', 'u obradi', 'nema napomene'),
+(8, 3, '2024-02-10', 'zaprimljen', 'nema napomene'),
 (2, 10, '2024-05-18', 'obrađen', 'na čekanju'),
-(10, 1, '2024-03-12', 'zaprimljen', 'Nema napomene'),
-(4, 9, '2024-06-22', 'u obradi', 'Nema napomene'),
+(10, 1, '2024-03-12', 'zaprimljen', 'nema napomene'),
+(4, 9, '2024-06-22', 'u obradi', 'nema napomene'),
 (6, 8, '2024-04-15', 'obrađen', 'odbijeno');
 
