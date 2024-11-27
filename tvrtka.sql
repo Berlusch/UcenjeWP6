@@ -15,19 +15,27 @@ sifra int not null primary key identity(1,1),
 ime varchar(30) not null,
 prezime varchar(30) not null,
 datumrodjenja date not null,
-placa dec(5,2),
+placa dec(18,2),
 invalid bit not null
+);
 
 create table slike(
 sifra int not null primary key identity(1,1),
 zaposlenik int not null references zaposlenici(sifra),
-rednibroj int not null
-putanja varchar(30) not null
+rednibroj int not null,
+putanja varchar(100) not null
 );
 
-INSERT INTO zaposlenici(ime, prezime, placa) VALUES
-('Ivana', 'Ivić', 7500.00),
-('Marko', 'Marić', 8500.00),
-('Ana', 'Horvat', 9200.00);
-insert into slike(zaposlenik) values
-(1, 2)
+insert into zaposlenici(ime, prezime, datumrodjenja, placa, invalid) VALUES
+('Ivana', 'Ivić', '1977-12-8', 7500.00, 0),
+('Marko', 'Marić', '1979-02-22', 8500.00, 0),
+('Ana', 'Horvat', '1992-11-03', 9200.00, 1);
+
+insert into slike(zaposlenik, rednibroj, putanja) values
+(1, 1, 'C:\Users\Ivana\Pictures\slika1.jpg'),
+(1, 2, 'C:\Users\Ivana\Pictures\slika2.jpg'),
+(2, 1, 'C:\Users\Marko\Pictures\slika1.jpg'),
+(2, 2, 'C:\Users\Marko\Pictures\slika2.jpg'),
+(3, 1, 'C:\Users\Ana\Pictures\slika1.jpg'),
+(3, 2, 'C:\Users\Ana\Pictures\slika2.jpg');
+
