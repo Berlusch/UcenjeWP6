@@ -17,6 +17,7 @@ namespace Ucenje
             //ulaz podataka u program
             string Ime = Console.ReadLine();
 
+            //običan način ispisa
             Console.WriteLine("Unijeli ste " + Ime);
 
             //formatirani način ispisa
