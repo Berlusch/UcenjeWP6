@@ -11,21 +11,17 @@ namespace Ucenje
 
         public static void Izvedi()
         {
-            //ovo je izlaz
+            // Ovo je izlaz
             Console.Write("Unesi svoje ime: ");
-            
-            //ulaz podataka u program
+
+
+            // Ulaz podataka u program
             string Ime = Console.ReadLine();
 
-            Console.Write("Unesi svoje prezime: ");
-            string Prezime = Console.ReadLine();
+            Console.WriteLine("Unijeli ste " + Ime);
 
-
-            //običan način ispisa
-            //Console.WriteLine("Unijeli ste " + Ime);
-
-            //formatirani način ispisa
-            Console.WriteLine("Unijeli ste {0}. Bravo!", Ime + " " + Prezime);
+            // formatirani način ispisa
+            Console.WriteLine("Unijeli ste {0}. Bravo!", Ime);
 
         }
 
