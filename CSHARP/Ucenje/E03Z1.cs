@@ -16,28 +16,31 @@ namespace Ucenje
     {
 
         public static void Izvedi()
-    {
-        Console.Write("Unesi jedan cijeli broj: ");
-        int a = int.Parse(Console.ReadLine());
-        Console.Write("Unesi drugi cijeli broj: ");
-        int b = int.Parse(Console.ReadLine());
+
+        {
+            Console.Write("Unesi jedan cijeli broj: ");
+            int a = int.Parse(Console.ReadLine());
+            Console.Write("Unesi drugi cijeli broj: ");
+            int b = int.Parse(Console.ReadLine());
 
          //1
-         Console.WriteLine("Zbroj ova dva broja je {0}", a + b);
+            Console.WriteLine("Zbroj ova dva broja je {0}", a + b);
          
          //2
-         Console.WriteLine("Razlika drugog i prvog broja je {0}", b - a);
+            Console.WriteLine("Razlika drugog i prvog broja je {0}", b - a);
 
          //3
-         Console.WriteLine("Umnožak ova dva broja je {0}", a * b);
+            Console.WriteLine("Umnožak ova dva broja je {0}", a * b);
 
          //4
-         Console.WriteLine("Zbroj kvadrata ova dva broja je {0}", a * a + b * b);
+            Console.WriteLine("Zbroj kvadrata ova dva broja je {0}", a * a + b * b);
 
          //5
-         Console.WriteLine("Kvocijent prvog i drugog broja je {0}", a / b + ", s ostatkom " + a%b + ".");
+            Console.WriteLine("Kvocijent prvog i drugog broja je {0}", a / b + ", s ostatkom " + a%b + ".");
 
+            // Drugi način
 
+            //Console.WriteLine("1. {0}\n2. {1}", a + b, b - a);
+        }
     }
-}
 }
