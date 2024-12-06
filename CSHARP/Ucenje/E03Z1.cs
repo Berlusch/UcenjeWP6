@@ -40,7 +40,7 @@ namespace Ucenje
 
             // Drugi način
 
-            //Console.WriteLine("1. {0}\n2. {1}", a + b, b - a);
+            Console.WriteLine("1. {0}\n2. {1}\n3. {2}\n4. {3}\n5. {4}, s ostatkom {5}", a + b, b - a, a * b, a * a + b * b, a / b, a%b);
         }
     }
 }
