@@ -1,8 +1,15 @@
 ﻿
 
 using Ucenje;
+//E04Z2.Izvedi();
 
-E03Z1.Izvedi();
+//E06Nizovi.Izvedi();
+
+//E05UvjetnoGrananjeSwitch.Izvedi();
+
+E04Z1.Izvedi();
+
+//E04UvjetnoGrananjeIf.Izvedi();
 
 //E03Operatori.Izvedi();
 
@@ -11,6 +18,7 @@ E03Z1.Izvedi();
 //E02VarijableTipoviPodataka.Izvedi();
 
 //E01UlazIzlaz.Izvedi();
+
 // komentar jedna linija
 
 /*

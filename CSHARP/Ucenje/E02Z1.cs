@@ -1,30 +1,21 @@
-﻿
-namespace Ucenje
+﻿namespace Ucenje
 {
 
+    // Napišite program koji unosi ime i broj godina osobe
 
+    // Program ispisuje: Osoba XXXXXX ima YY godina.
 
-    // napišite program koji unosi ime i broj godina
-
-    // program ispisuje: Osoba XXX ima YY godina
     internal class E02Z1
     {
-
+        // Ova metoda je uvijek potrebna (za sada ju "kucamo" ručno)
         public static void Izvedi()
         {
-            Console.Write("Upiši ime: ");
-            string ime = Console.ReadLine();
-            Console.Write("Upiši koliko imaš godina: ");
-            int godine = int.Parse(Console.ReadLine());
-            //Console.WriteLine("Osoba {0} ima {1} godina.", ime, godine);
-            Console.WriteLine("Osoba " + ime + " ima " + godine + " godina.");
+
+            //ovdje se piše rješenje tadatka
+           
+
         }
 
-            
-       
-        
-
-        
 
     }
 }
