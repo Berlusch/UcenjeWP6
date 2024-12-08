@@ -8,6 +8,7 @@ namespace Ucenje
 {
     internal class E06Nizovi
     {
+<<<<<<< HEAD
 
         public static void Izvedi()
         {
@@ -33,6 +34,26 @@ namespace Ucenje
 
 
             // dvodimenzionalni niz
+=======
+        public static void Izvedi()
+        {
+            //end.Arrays
+            //još na hr pojam POLJE
+            //uglata zagrada altgr fg
+            //jednodimenzionalni niz
+            int[] temp = new int[12]; //treba unaprijed znati broj elemenata
+
+            //prvi element niza je na indeksu 0
+            temp[0] = 2;
+            //i na ostalo
+            temp[11] = 4;
+
+            Console.WriteLine(temp);
+            Console.WriteLine(string.Join(",", temp));
+
+
+            //dvodimenzionalni niz
+>>>>>>> 6b5bbcef1a2b67d556a568dff19e946cca422870
             int[,] tablica =
             {
                 {1,2,3 },
@@ -40,6 +61,7 @@ namespace Ucenje
                 {7,8,9 }
             };
 
+<<<<<<< HEAD
             // kako bi ispisali broj 6
 
             Console.WriteLine(tablica[1,2]);
@@ -58,5 +80,18 @@ namespace Ucenje
 
         }
 
+=======
+            //kako bi ispisali broj 6
+            Console.WriteLine(tablica[1,2]);
+
+            //tesaarect - 4 dimenzije
+
+            int[,,,] tesaarect = { };
+
+            //multiverse
+            int[,,,,,,] multiverse = { };
+
+        }
+>>>>>>> 6b5bbcef1a2b67d556a568dff19e946cca422870
     }
 }

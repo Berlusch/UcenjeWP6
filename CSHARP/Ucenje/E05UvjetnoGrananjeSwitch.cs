@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+<<<<<<< HEAD
+=======
+using System.Text.Json.Serialization.Metadata;
+>>>>>>> 6b5bbcef1a2b67d556a568dff19e946cca422870
 using System.Threading.Tasks;
 
 namespace Ucenje
@@ -28,6 +32,7 @@ namespace Ucenje
                     break;
             }
 
+<<<<<<< HEAD
             // switch radi s int, string, char i drugi https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/statements#1383-the-switch-statement
 
 
@@ -38,5 +43,12 @@ namespace Ucenje
             
         }
 
+=======
+            char znak = '@';
+            Console.WriteLine(znak);
+            Console.WriteLine((int)znak);
+           
+        }
+>>>>>>> 6b5bbcef1a2b67d556a568dff19e946cca422870
     }
 }
