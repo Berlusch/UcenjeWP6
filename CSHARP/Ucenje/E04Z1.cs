@@ -50,25 +50,4 @@ namespace Ucenje
 
         }
     }
-=======
-            Console.Write("Koliko imaš godina?");
-            int godine = int.Parse(Console.ReadLine());
 
-            if (godine <= 18)
-            {
-                Console.WriteLine("Vi ste maloljetna osoba");
-            }
-            else
-            {
-                Console.WriteLine("Vi ste punoljetna osoba");
-            }
-
-            if (godine > 112 && godine < 0)
-            {
-            Console.WriteLine("Greška");
-            }
-        }
-    }
-
->>>>>>> 6b5bbcef1a2b67d556a568dff19e946cca422870
-}
