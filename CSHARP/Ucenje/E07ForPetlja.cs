@@ -37,6 +37,7 @@ namespace Ucenje
             {
                 Console.WriteLine("{0}. Unazad", i);
             }
+
             //ugniježđena petlja
 
             for (int i = 1; i <= 10; i++)
@@ -100,13 +101,48 @@ namespace Ucenje
 
             for (int i = 0; i < tablica.GetLength(0); i++)//x
             {
-                for (int j = 0; j < tablica.GetLength(1); j++)
-                //y
+                for (int j = 0; j < tablica.GetLength(1); j++)//y
                 {
                     Console.Write(tablica[i, j] + " ");
                 }
                 Console.WriteLine();
             }
+
+            //petlju se može preskočiti (nastaviti) i nasilno prekinuti
+
+            for (int i = 0; i < 10; i++)
+            {
+                if (i == 3)
+                {
+                    continue;
+                }
+
+                if (i == 7)
+                {
+                    break;
+                }
+
+                Console.WriteLine(i);
+            }
+
+            //saznati kako prekinuti ugniježđenu petlju (iz najdublje vanjsku)
+
+            //----------------beskonačna petlja
+
+            //kako postići beskonačnu petlju - ovo nije!
+
+            for(int i=0;i>=0; i++)
+            { 
+                Console.WriteLine(i);
+                break;
+            }       
+            //beskonačna
+            for(; ; )
+            {
+                Console.WriteLine(new Random().NextInt64() + "" + new Random().NextInt64() +""+ new Random().NextInt64());
+                Thread.Sleep(300);
+            }
+
 
         }
 
