@@ -27,35 +27,60 @@ namespace Ucenje
             Console.Write("Unesi ime grada: ");
             string grad = Console.ReadLine();
 
+            /*
+                        if (grad == "Osijek")
+                        {
+                            Console.WriteLine("Regija Slavonija");
+                        }
+                        if (grad == "Zadar")
+                        {
+                            Console.WriteLine("Regija Dalmacija");
+                        }
 
-            if (grad == "Osijek")
+                        if (grad == "Čakovec")
+                        {
+                            Console.WriteLine("Regija Međimurje");
+                        }
+
+                        if (grad == "Pula")
+                        {
+                            Console.WriteLine("Regija Istra");
+                        }
+
+                        if (grad != "Osijek" && grad != "Zadar" && grad != "Čakovec" && grad != "Pula")
+
+                            Console.WriteLine("Ne znam koja je to regija.");
+                        */
+
+            //-------------switch
+
+            switch (grad)
             {
-                Console.WriteLine("Regija Slavonija");
-            }
-            if (grad == "Zadar")
-            {
-                Console.WriteLine("Regija Dalmacija");
+                case "Osijek":
+                    Console.WriteLine("Regija Slavonija");
+                    break;
+                case "Zadar":
+                    Console.WriteLine("Regija Dalmacija");
+                    break;
+                case "Čakovec":
+                    Console.WriteLine("Regija Međimurje");
+                    break;
+                case "Pula":
+                    Console.WriteLine("Regija Istra");
+                    break;
+                default:
+                    Console.WriteLine("Ne znam koja je to regija");
+                    break;
             }
 
-            if (grad == "Čakovec")
-            {
-                Console.WriteLine("Regija Međimurje");
-            }
-
-            if (grad == "Pula")
-            {
-                Console.WriteLine("Regija Istra");
-            }
-
-            if (grad != "Osijek" && grad != "Zadar" && grad != "Čakovec" && grad != "Pula")
-
-                Console.WriteLine("Ne znam koja je to regija.");
         }
-
-
-
-
     }
 }
+
+
+
+
+
+
 
 
