@@ -8,13 +8,13 @@ namespace Ucenje
 {
     internal class E09Z2
     {
-        public static void Izvedi();
-        {
-        int sum = 0, broj;
-        E08WhilePetlja(true)
-        {
+        //public static void Izvedi();
+        //{
+        //int sum = 0, broj;
+        //E08WhilePetlja(true)
+        
 
         }
         }
-    }
-}
+    
+
