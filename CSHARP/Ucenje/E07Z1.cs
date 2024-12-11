@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,51 +8,47 @@ using System.Threading.Tasks;
 namespace Ucenje
 {
     internal class E07Z1
-
-    //program od korisnika unosi cijeli broj
-
-    //ako je uneseni broj paran, program ispisuje zbroj svih brojeva od 1 do unesenog
-    //inače program ispisuje svaki neparni broj od 1 do unesenog
     {
+        // Program od korisnika unosi cijeli broj
+
+        //  Ako je uneseni broj paran, program ispisuje zbroj svih brojeva od 1 do unesenog
+        // inače program ispisuje svaki neparni broj od 1 do unesenog
         public static void Izvedi()
         {
-            Console.Write("Unesi jedan cijeli broj: ");
+            Console.Write("Unesi cijeli broj: ");
             int broj = int.Parse(Console.ReadLine());
+
 
             if (broj % 2 == 0)
             {
-                int sum = 0;
-                for (int i = 1; i <= broj; i++)
+                int zbroj = 0;
+                for (int i = 0; i <= broj; i++)
                 {
-                    sum += i;
+                    zbroj += i;
                 }
-                Console.WriteLine(sum);
 
-
+            Console.WriteLine(zbroj);
             }
+
             else
             {
-                int sum = 0;
-                for (int i = 1; i <= broj; i++)
+                for(int i=1; i <= broj; i++)
                 {
-                    if (i % 2 == 1)
+                    if (i % 2 != 0)
                     {
-                        {
-                            sum += i;
-                        }
                         Console.WriteLine(i);
                     }
                 }
 
-
-
-
-
             }
 
 
-
         }
+
+
+
+
+
+
     }
 }
-

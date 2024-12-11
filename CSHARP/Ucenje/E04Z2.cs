@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,9 +29,6 @@ namespace Ucenje
 
             // sada dajte rješenje s inline if
 
-            Console.WriteLine(broj%2 == 0 ? "Paran" : "Neparan");
-
         }
-        
     }
 }
