@@ -21,20 +21,13 @@ namespace Ucenje
             int godine = int.Parse(Console.ReadLine());
             if (godine >= 18)
             {
-                if (godine> 112)
-                Console.WriteLine("Greška!");
-                else                    
                 Console.WriteLine("Punoljetan");
 
             }
-            if (godine < 18)
+            else
             {
-                if (godine < 0)
-                    Console.WriteLine("Greška!");
-                else
-                    Console.WriteLine("Maloljetan");
+                Console.WriteLine("Maloljetan");
             }
-            
         }
     }
 }
