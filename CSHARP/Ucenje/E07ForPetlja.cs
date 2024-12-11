@@ -48,7 +48,7 @@ namespace Ucenje
                 Console.WriteLine();
             }
 
-            // DZ lijepo formatirati brojeve prema desno
+            // DZ lipo formatirati brojeve prema desno
 
 
             // koliko je zbroj prvih 100 brojeva?
