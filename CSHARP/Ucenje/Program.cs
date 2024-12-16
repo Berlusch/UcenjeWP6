@@ -8,7 +8,7 @@ using Ucenje;
 
 //E10Z1.Izvedi();
 
-E10ForEachPetlja.Izvedi();
+E10ForeachPetlja.Izvedi();
 
 //E09Z1.Izvedi();
 
