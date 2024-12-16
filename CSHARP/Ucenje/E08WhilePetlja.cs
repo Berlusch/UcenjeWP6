@@ -70,9 +70,9 @@ namespace Ucenje
             broj = 1;
             while (broj <= 100)
             {
-                suma += broj++;
-                //suma = suma + broj;
-                //broj = broj + 1;
+                //suma += broj++;
+                suma = suma + broj;
+                broj = broj + 1;
             }
             Console.WriteLine(suma);
 

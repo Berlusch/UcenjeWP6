@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,31 +20,8 @@ namespace Ucenje
         {
             //Console.WriteLine("Z1");
 
-            Console.Write("Unesi jedan cijeli broj: ");
-            int broj = int.Parse(Console.ReadLine());
-            int suma = 0;
-            int i = 2;
-
-            while (i <= broj)
-            {
-                suma += i;
-                i += 2; //kako bi broj bio uvijek samo paran
-            }
-            Console.WriteLine("Zbroj svih parnih brojeva od 1 do {0} je {1}", broj, suma);
-
-            //DRUGI NAČIN
-
-            if (i % 2 == 0)
-            {
-                while (i <= broj)
-                {
-                    suma += i;
-                }
-                Console.WriteLine("Zbroj svih parnih brojeva od 1 do {0} je {1}", broj, suma);
-            }
-
+           
         }
-
 
 
     }
