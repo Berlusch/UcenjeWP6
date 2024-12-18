@@ -48,11 +48,11 @@ namespace Ucenje
         // Tip 2: Prima parametre ali ne vraća vrijednost
         private static void Tip2(int x) // x je parametar tipa int
         {
-            for(int i= 0; i < x; i++)
+            for (int i = 0; i < x; i++)
             {
                 Console.WriteLine(i);
             }
-            
+
         }
 
         // potpis metode:
@@ -80,7 +80,7 @@ namespace Ucenje
         private static int Tip4(int[] niz)
         {
             int suma = 0;
-            foreach(int i in niz)
+            foreach (int i in niz)
             {
                 suma += i;
             }
@@ -102,14 +102,33 @@ namespace Ucenje
                 {
                     return int.Parse(Console.ReadLine());
                 }
-                catch 
+                catch
                 {
-                    Console.WriteLine("Problem kod učitanja broja!");                    
+                    Console.WriteLine("Problem kod učitanja broja!");
                 }
             }
 
 
-           // return 0; // kasnije obrisati
+            // return 0; // kasnije obrisati
+        }
+
+        public static string UcitajString(string poruka)
+        {
+            string s = "";
+            while (true)
+            {
+                Console.Write(poruka);
+                s = Console.ReadLine().Trim();
+                if(s.Length== 0)
+                {
+                    Console.WriteLine("Obavezan unos");
+                    continue;
+                }
+                return s;
+            }
+
+            //return "";
+
         }
 
 
