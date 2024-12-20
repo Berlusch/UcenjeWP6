@@ -107,6 +107,28 @@ namespace Ucenje
                     Console.WriteLine("Problem kod učitanja broja!");
                 }
             }
+        }
+
+        public static int UcitajCijeliBroj(string poruka, int min, int max)
+        {
+
+            while (true)
+            {
+                Console.Write(poruka);
+                try
+                {
+                    int i = int.Parse(Console.ReadLine());
+                    if(i<min || i > max)
+                    {
+                        Console.WriteLine("Broj nije u danom rasponu {0}-{1}", min, max);
+                    }
+                    return i;
+                }
+                catch
+                {
+                    Console.WriteLine("Problem kod učitanja broja!");
+                }
+            }
 
 
             // return 0; // kasnije obrisati
@@ -119,7 +141,7 @@ namespace Ucenje
             {
                 Console.Write(poruka);
                 s = Console.ReadLine().Trim();
-                if(s.Length== 0)
+                if (s.Length == 0)
                 {
                     Console.WriteLine("Obavezan unos");
                     continue;

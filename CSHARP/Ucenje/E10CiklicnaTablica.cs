@@ -13,6 +13,7 @@ namespace Ucenje
         {
             int redova = 5;
             int kolona = 5;
+            string razmak = "";
 
 
             //int redova = E12Metode.UcitajCijeliBroj("Unesi broj redova: ");
@@ -25,17 +26,69 @@ namespace Ucenje
             for (int i = kolona - 1; i >= 0; i--)
             {
                 tablica[redova - 1, i] = brojac++;
+                                
             }
-
-            //IspisiTablicu(tablica);
 
             //dolje lijevo prema gore
-            for (int i = redova - 2; i <= 0; i--)
+
+            for (int i = redova - 2; i >= 0; i--)
             {
-                tablica[i, kolona - 5] = brojac++;
+                tablica[i, 0] = brojac++;
             }
 
+            //gore lijevo prema desno
+
+            for (int i = kolona - 4; i <= kolona - 1; i++)
+            {
+                tablica[0, i] = brojac++;
+            }
+
+            //gore desno prema dolje
+
+            for (int i = redova - 4; i <= redova - 2; i++)
+            {
+                tablica[i, kolona - 1] = brojac++;
+            }
+
+            //
+
+            for (int i = kolona - 2; i >= 1; i--)
+            {
+                tablica[redova - (redova - 3), i] = brojac++;
+            }
+
+            //
+
+            for (int i = redova - 3; i >= 1; i--)
+            {
+                tablica[i, kolona - 4] = brojac++;
+            }
+
+            //
+
+            for (int i = kolona - 3; i <= 3; i++)
+            {
+                tablica[redova - 4, i] = brojac++;
+            }
+
+            //
+
+            for (int i = kolona - 2; i >= 2; i--)
+            {
+                tablica[redova - 3, i] = brojac++;
+            }
+
+            
             IspisiTablicu(tablica);
+
+
+
+
+
+
+
+
+
         }
         private static void IspisiTablicu(int[,] tablica)
         {
@@ -43,8 +96,15 @@ namespace Ucenje
             {
                 for (int j = 0; j < tablica.GetLength(1); j++)
                 {
-                    Console.Write(tablica[i, j] + " ");
+
+                    {
+                        Console.Write(tablica[i, j] + "  ");
+
+                    }
+
+
                 }
+                Console.WriteLine();
                 Console.WriteLine();
 
             }
@@ -52,3 +112,4 @@ namespace Ucenje
         }
     }
 }
+
