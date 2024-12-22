@@ -6,7 +6,7 @@ using Ucenje;
 
 //E14Vjezbanje.Izvedi();
 
-//E10CiklicnaTablica.Izvedi();
+E10CiklicnaTablica.Izvedi();
 
 //E13Z2.Izvedi();
 
@@ -22,7 +22,8 @@ using Ucenje;
 
 //E11TryCatch.Izvedi();
 
-E10Z1.Izvedi();
+//E10Z1.Izvedi();
+
 //E10ForeachPetlja.Izvedi();
 
 //E09Z2.Izvedi();

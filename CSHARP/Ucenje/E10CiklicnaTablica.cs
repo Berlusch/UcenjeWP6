@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,22 +12,122 @@ namespace Ucenje
 
         public static void Izvedi()
         {
-            int redova = 5;
-            int kolona = 5;
-            string razmak = "";
+            int redova = 7;
+            int kolona = 9;
+
+
 
 
             //int redova = E12Metode.UcitajCijeliBroj("Unesi broj redova: ");
             //int kolona = E12Metode.UcitajCijeliBroj("Unesi broj kolona: ");
 
+            int cilj = redova * kolona;
+            int brojac = 1;
+            int max = -1;
             int[,] tablica = new int[redova, kolona];
 
-            int brojac = 1;
-            //dolje desno prema lijevo
+
+            while(brojac<=cilj)
+            {
+                redova = redova - 1;
+                kolona = kolona - 1;
+                max = max + 1;
+                
+                
+
+                for (int i = kolona; i >= max; i--)
+                {
+                    tablica[redova, i] = brojac++;
+
+                }
+                if (brojac == cilj)
+                {
+
+                    break;
+                }
+                //Console.WriteLine("Prva");
+                //IspisiTablicu(tablica);
+
+
+                //dolje lijevo prema gore
+
+                for (int i = redova - 1; i >= max; i--)
+                {
+                    tablica[i, max] = brojac++;
+
+                }
+                if (brojac == cilj)
+                {
+
+                    break;
+                }
+                //Console.WriteLine("Druga");
+                //IspisiTablicu(tablica);
+
+                //gore lijevo prema desno
+
+                for (int i = max + 1; i <= kolona; i++)
+                {
+                    tablica[max, i] = brojac++;
+                }
+                if (brojac == cilj)
+                {
+
+                    break;
+                }
+                
+                //Console.WriteLine("Treća");
+                //IspisiTablicu(tablica);
+                //gore desno prema dolje
+
+                for (int i = max+1; i <= redova - (max+1); i++)
+                {
+                    tablica[i, kolona] = brojac++;
+                }
+                if (brojac == cilj)
+                {
+                    break;
+                }
+                
+                //Console.WriteLine("Četvrta");
+                //IspisiTablicu(tablica);
+
+            }
+            //Console.WriteLine("Zadnja");
+            IspisiTablicu(tablica);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            ///////PRVA VERZIJA 5X5
+
+
+            /*//dolje desno prema lijevo
             for (int i = kolona - 1; i >= 0; i--)
             {
                 tablica[redova - 1, i] = brojac++;
-                                
+
             }
 
             //dolje lijevo prema gore
@@ -78,8 +179,10 @@ namespace Ucenje
                 tablica[redova - 3, i] = brojac++;
             }
 
-            
-            IspisiTablicu(tablica);
+            */
+            //IspisiTablicu(tablica);
+
+
 
 
 
@@ -98,7 +201,7 @@ namespace Ucenje
                 {
 
                     {
-                        Console.Write(tablica[i, j] + "  ");
+                        Console.Write("{0,4}", tablica[i, j] + "  ");
 
                     }
 
@@ -112,4 +215,5 @@ namespace Ucenje
         }
     }
 }
+
 
