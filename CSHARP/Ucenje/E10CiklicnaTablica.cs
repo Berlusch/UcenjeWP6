@@ -12,14 +12,8 @@ namespace Ucenje
 
         public static void Izvedi()
         {
-            int redova = 7;
-            int kolona = 9;
-
-
-
-
-            //int redova = E12Metode.UcitajCijeliBroj("Unesi broj redova: ");
-            //int kolona = E12Metode.UcitajCijeliBroj("Unesi broj kolona: ");
+            int redova = E12Metode.UcitajCijeliBroj("Unesi broj redova: ");
+            int kolona = E12Metode.UcitajCijeliBroj("Unesi broj kolona: ");
 
             int cilj = redova * kolona;
             int brojac = 1;
@@ -31,10 +25,9 @@ namespace Ucenje
             {
                 redova = redova - 1;
                 kolona = kolona - 1;
-                max = max + 1;
+                max++;
                 
                 
-
                 for (int i = kolona; i >= max; i--)
                 {
                     tablica[redova, i] = brojac++;
@@ -76,11 +69,12 @@ namespace Ucenje
                     break;
                 }
                 
+                
                 //Console.WriteLine("Treća");
                 //IspisiTablicu(tablica);
                 //gore desno prema dolje
 
-                for (int i = max+1; i <= redova - (max+1); i++)
+                for (int i = max+1; i <= redova-(max+1); i++)
                 {
                     tablica[i, kolona] = brojac++;
                 }
@@ -104,23 +98,7 @@ namespace Ucenje
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            ///////PRVA VERZIJA 5X5
+            ///////PRVA VERZIJA 5X5 *******************************************
 
 
             /*//dolje desno prema lijevo
