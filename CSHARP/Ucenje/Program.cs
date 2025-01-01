@@ -2,11 +2,13 @@
 
 using Ucenje;
 
+E16ZimskiZadaci.Izvedi();
+
 //E15Subota.Izvedi();
 
 //E14Vjezbanje.Izvedi();
 
-E10CiklicnaTablica.Izvedi();
+//E10CiklicnaTablica.Izvedi();
 
 //E13Z2.Izvedi();
 
