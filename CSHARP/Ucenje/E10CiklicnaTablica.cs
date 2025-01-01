@@ -17,156 +17,42 @@ namespace Ucenje
 
             int cilj = redova * kolona;
             int brojac = 1;
-            int max = -1;
+            int maxLijevo = 0;
+            int maxGore = 0;
+            int maxDesno = kolona - 1;
+            int maxDolje = redova - 1;
+
             int[,] tablica = new int[redova, kolona];
 
-
+            
             while (brojac <= cilj)
             {
-                redova = redova - 1;
-                kolona = kolona - 1;
-                max++;
+                // Dolje desno prema lijevo
+                for (int i = maxDesno; i >= maxLijevo; i--)
+                    tablica[maxDolje, i] = brojac++;
+                maxDolje--;
+                if (brojac == cilj) break;
 
+                // Lijevo dolje prema gore
+                for (int i = maxDolje; i >= maxGore; i--)
+                    tablica[i, maxLijevo] = brojac++;
+                maxLijevo++;
+                if (brojac == cilj) break;
 
-                for (int i = kolona; i >= max; i--)
-                {
-                    tablica[redova, i] = brojac++;
+                // Gore lijevo prema desno
+                for (int i = maxLijevo; i <= maxDesno; i++)
+                    tablica[maxGore, i] = brojac++;
+                maxGore++;
+                if (brojac == cilj) break;
 
-                }
-                if (brojac == cilj)
-                {
-
-                    break;
-                }
-                //Console.WriteLine("Prva");
-                //IspisiTablicu(tablica);
-
-
-                //dolje lijevo prema gore
-
-                for (int i = redova - 1; i >= max; i--)
-                {
-                    tablica[i, max] = brojac++;
-
-                }
-                if (brojac == cilj)
-                {
-
-                    break;
-                }
-                //Console.WriteLine("Druga");
-                //IspisiTablicu(tablica);
-
-                //gore lijevo prema desno
-
-                for (int i = max + 1; i <= kolona; i++)
-                {
-                    tablica[max, i] = brojac++;
-                }
-                if (brojac == cilj)
-                {
-
-                    break;
-                }
-
-
-                //Console.WriteLine("Treća");
-                //IspisiTablicu(tablica);
-                //gore desno prema dolje
-
-                for (int i = max + 1; i <= redova - (max + 1); i++)
-                {
-                    tablica[i, kolona] = brojac++;
-                }
-                if (brojac == cilj)
-                {
-                    break;
-                }
-
-                //Console.WriteLine("Četvrta");
-                //IspisiTablicu(tablica);
-
+                // Desno gore prema dolje
+                for (int i = maxGore; i <= maxDolje; i++)
+                    tablica[i, maxDesno] = brojac++;
+                maxDesno--;
+                if (brojac == cilj) break;
             }
-            //Console.WriteLine("Zadnja");
+
             IspisiTablicu(tablica);
-
-
-
-
-
-
-
-
-
-            ///////PRVA VERZIJA 5X5 *******************************************
-
-
-            /*//dolje desno prema lijevo
-            for (int i = kolona - 1; i >= 0; i--)
-            {
-                tablica[redova - 1, i] = brojac++;
-
-            }
-
-            //dolje lijevo prema gore
-
-            for (int i = redova - 2; i >= 0; i--)
-            {
-                tablica[i, 0] = brojac++;
-            }
-
-            //gore lijevo prema desno
-
-            for (int i = kolona - 4; i <= kolona - 1; i++)
-            {
-                tablica[0, i] = brojac++;
-            }
-
-            //gore desno prema dolje
-
-            for (int i = redova - 4; i <= redova - 2; i++)
-            {
-                tablica[i, kolona - 1] = brojac++;
-            }
-
-            //
-
-            for (int i = kolona - 2; i >= 1; i--)
-            {
-                tablica[redova - (redova - 3), i] = brojac++;
-            }
-
-            //
-
-            for (int i = redova - 3; i >= 1; i--)
-            {
-                tablica[i, kolona - 4] = brojac++;
-            }
-
-            //
-
-            for (int i = kolona - 3; i <= 3; i++)
-            {
-                tablica[redova - 4, i] = brojac++;
-            }
-
-            //
-
-            for (int i = kolona - 2; i >= 2; i--)
-            {
-                tablica[redova - 3, i] = brojac++;
-            }
-
-            */
-            //IspisiTablicu(tablica);
-
-
-
-
-
-
-
-
 
 
 
@@ -189,8 +75,7 @@ namespace Ucenje
                 Console.WriteLine();
 
             }
-            //Console.WriteLine("*************************");
+
         }
     }
 }
-
