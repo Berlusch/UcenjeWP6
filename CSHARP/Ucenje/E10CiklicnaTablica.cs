@@ -24,34 +24,43 @@ namespace Ucenje
 
             int[,] tablica = new int[redova, kolona];
 
-            
+
             while (brojac <= cilj)
             {
-                // Dolje desno prema lijevo
+                // Dolje desno prema lijevo------------------------------------------------------
                 for (int i = maxDesno; i >= maxLijevo; i--)
+                {
                     tablica[maxDolje, i] = brojac++;
+                }
                 maxDolje--;
                 if (brojac == cilj) break;
 
-                // Lijevo dolje prema gore
+                // Lijevo dolje prema gore-------------------------------------------------------------
                 for (int i = maxDolje; i >= maxGore; i--)
+                {
                     tablica[i, maxLijevo] = brojac++;
+                }
                 maxLijevo++;
                 if (brojac == cilj) break;
 
-                // Gore lijevo prema desno
+                // Gore lijevo prema desno-----------------------------------------------------------
                 for (int i = maxLijevo; i <= maxDesno; i++)
+                {
                     tablica[maxGore, i] = brojac++;
+                }
                 maxGore++;
                 if (brojac == cilj) break;
 
-                // Desno gore prema dolje
+                // Desno gore prema dolje----------------------------------------------------------------
                 for (int i = maxGore; i <= maxDolje; i++)
+                {
                     tablica[i, maxDesno] = brojac++;
+                }
                 maxDesno--;
                 if (brojac == cilj) break;
             }
 
+            //Ispis tablice-----------------------------------------------------------------------
             IspisiTablicu(tablica);
 
 
@@ -68,7 +77,6 @@ namespace Ucenje
                         Console.Write("{0,4}", tablica[i, j] + "  ");
 
                     }
-
 
                 }
                 Console.WriteLine();
