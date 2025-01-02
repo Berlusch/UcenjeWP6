@@ -113,7 +113,10 @@ namespace Ucenje
             Console.WriteLine();
             Console.Write("Unio si sljedeći niz: ");
             Console.WriteLine(string.Join(", ", niz));
+            Console.BackgroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine($"Zbroj elemenata ovog niza je {sum}.");
+            Console.ResetColor();
 
 
 
@@ -163,7 +166,7 @@ namespace Ucenje
         {
             //Console.WriteLine("***************");
             NaglasiNaslov(naslov.Length);
-            Console.BackgroundColor = ConsoleColor.Yellow;
+            Console.BackgroundColor = ConsoleColor.DarkYellow;
             Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine(naslov);
             Console.ResetColor();
