@@ -29,7 +29,8 @@ namespace Ucenje
             {
                 "Izračun površine pravokutnika",
                 "Pozitivan ili negativan broj?",
-                "Zbroj elemenata niza"
+                "Zbroj elemenata niza",
+                "Prosjek ocjena"
 
             };
 
@@ -67,7 +68,62 @@ namespace Ucenje
                     ZbrojElemenataNiza();
                     Izbornik();
                     break;
+                case 4:
+                    ProsjekOcjena();
+                    Izbornik();
+                    break;
             }
+        }
+
+        private static void ProsjekOcjena()
+        {
+            NaslovPrograma("Prosjek ocjena");
+            int brojOcjena;
+            while (true)
+            {
+                try
+                {
+                    Console.Write("Unesi željeni broj ocjena (najviše 20): ");
+                    brojOcjena = int.Parse(Console.ReadLine());
+                    if (brojOcjena < 1 || brojOcjena > 20)
+                    {
+                        Console.WriteLine("Nisi unio dobar broj, pokušaj ponovno!");
+                        continue;
+                    }
+                    break;
+
+                }
+                catch
+                {
+                    Console.WriteLine("Nisi dobro unio broj!");
+                }
+
+            }
+            Console.WriteLine();
+            Console.WriteLine("Broj ocjena je {0}. Sad unesi jednu po jednu ocjenu", brojOcjena);
+
+
+            int[] niz = new int[brojOcjena];
+            int sum = 0;
+
+            for (int i = 0; i < (brojOcjena); i++)
+            {
+                int ocjena = E12Metode.UcitajCijeliBroj($"Unesi ocjenu broj {i + 1}: ");
+                niz[i] = ocjena;
+                sum += ocjena;
+                
+            }
+            decimal prosjek = (decimal)sum / brojOcjena;
+            prosjek = Math.Round(prosjek, 2);
+
+            Console.WriteLine();
+            Console.Write("Unio si sljedeće ocjene: ");
+            Console.WriteLine(string.Join(", ", niz));
+            Console.BackgroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine($"Prosjek ocjena je {prosjek}");
+            Console.ResetColor();
+
         }
 
         private static void ZbrojElemenataNiza()
@@ -96,7 +152,7 @@ namespace Ucenje
 
             }
             Console.WriteLine();
-            Console.WriteLine("U redu, broj članova niza je {0}. Sad unesi jedan po jedan broj, ukupno {0}.", velicinaNiza);
+            Console.WriteLine("U redu, broj članova niza je {0}. Sad unesi jedan po jedan broj.", velicinaNiza);
 
 
             int[] niz = new int[velicinaNiza];
@@ -118,23 +174,7 @@ namespace Ucenje
             Console.WriteLine($"Zbroj elemenata ovog niza je {sum}.");
             Console.ResetColor();
 
-
-
-            /*//"jedan po jedan broj u niz. Kada je unos gotov, upiši OK.");
-            Console.WriteLine();
-
-            int i;
-
-
-            i = E12Metode.UcitajCijeliBroj("Upiši cijeli broj: ");
-
-            int[] niz = new int[i];
-            */
-
-
-
-
-
+            
         }
 
         private static void IzracunPovrsinePravokutnika()
