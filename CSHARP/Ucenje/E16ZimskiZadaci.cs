@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,12 +28,16 @@ namespace Ucenje
             string[] programi =
             {
                 "Izračun površine pravokutnika",
-                "Pozitivan ili negativan broj?"
+                "Pozitivan ili negativan broj?",
+                "Zbroj elemenata niza"
 
             };
 
             Console.WriteLine();
+            Console.BackgroundColor = ConsoleColor.Magenta;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("IZBORNIK");
+            Console.ResetColor();
             Console.WriteLine();
             for (int i = 0; i < programi.Length; i++)
             {
@@ -57,13 +63,82 @@ namespace Ucenje
                     PozitivanNegativanBroj();
                     Izbornik();
                     break;
+                case 3:
+                    ZbrojElemenataNiza();
+                    Izbornik();
+                    break;
             }
         }
+
+        private static void ZbrojElemenataNiza()
+        {
+            NaslovPrograma("Zbroj elemenata niza");
+
+            int velicinaNiza;
+            while (true)
+            {
+                try
+                {
+                    Console.Write("Unesi željeni broj cijelih brojeva u nizu (2-10): ");
+                    velicinaNiza = int.Parse(Console.ReadLine());
+                    if (velicinaNiza < 2 || velicinaNiza > 10)
+                    {
+                        Console.WriteLine("Nisi unio dobar broj, pokušaj ponovno!");
+                        continue;
+                    }
+                    break;
+
+                }
+                catch
+                {
+                    Console.WriteLine("Nisi dobro unio broj!");
+                }
+
+            }
+            Console.WriteLine();
+            Console.WriteLine("U redu, broj članova niza je {0}. Sad unesi jedan po jedan broj, ukupno {0}.", velicinaNiza);
+
+
+            int[] niz = new int[velicinaNiza];
+            int sum = 0;
+
+            for (int i = 0; i < (velicinaNiza); i++)
+            {
+                int broj = E12Metode.UcitajCijeliBroj($"Unesi {i + 1}. broj: ");
+                niz[i] = broj;
+                sum += broj;
+
+            }
+
+            Console.WriteLine();
+            Console.Write("Unio si sljedeći niz: ");
+            Console.WriteLine(string.Join(", ", niz));
+            Console.WriteLine($"Zbroj elemenata ovog niza je {sum}.");
+
+
+
+            /*//"jedan po jedan broj u niz. Kada je unos gotov, upiši OK.");
+            Console.WriteLine();
+
+            int i;
+
+
+            i = E12Metode.UcitajCijeliBroj("Upiši cijeli broj: ");
+
+            int[] niz = new int[i];
+            */
+
+
+
+
+
+        }
+
         private static void IzracunPovrsinePravokutnika()
         {
             NaslovPrograma("Izračun površine pravokutnika");
-            int a = E12Metode.UcitajCijeliBroj("Unesi duljinu stranice a pravokutnika: ");
-            int b = E12Metode.UcitajCijeliBroj("Unesi duljinu stranice b pravokutnika: ");
+            int a = E12Metode.UcitajCijeliBroj("Unesi duljinu stranice pravokutnika: ");
+            int b = E12Metode.UcitajCijeliBroj("Unesi širinu stranice pravokutnika: ");
 
             Console.WriteLine("Površina pravokutnika duljina stranica {0} i {1} je {2}", a, b, a * b);
         }
@@ -88,7 +163,10 @@ namespace Ucenje
         {
             //Console.WriteLine("***************");
             NaglasiNaslov(naslov.Length);
+            Console.BackgroundColor = ConsoleColor.Yellow;
+            Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine(naslov);
+            Console.ResetColor();
             NaglasiNaslov(naslov.Length);
 
         }
