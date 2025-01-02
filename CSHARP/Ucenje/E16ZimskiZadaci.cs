@@ -95,7 +95,7 @@ namespace Ucenje
             }
             Console.BackgroundColor = ConsoleColor.Green;
             Console.ForegroundColor = ConsoleColor.Black;
-            Console.Write("Fibonaccijev niz za {0} brojeva je: ", n);
+            Console.Write("Prvih {0} brojeva Fibonaccijeva niza: ", n);
             Console.WriteLine(string.Join(", ", niz));
             Console.ResetColor();
 
