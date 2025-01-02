@@ -84,22 +84,22 @@ namespace Ucenje
         {
 
             int n = E12Metode.UcitajCijeliBroj("Unesi broj n za ispis prvih n brojeva Fibonaccijeva niza: ");
-            int[] niz = new int[n+2];
-            
-            for (int i = n; i >0; i--)
+            int[] niz = new int[n];
+            niz[0] = 1;
+            niz[1] = 1;
+
+            for (int i = 2; i < n; i++)
             {
-                niz[i] = niz[i + 2] - niz[i+1];
-                Console.WriteLine(string.Join(", ", niz));
-            }
-            
-            /*foreach(int x in niz)
-            {
+                niz[i] = niz[i - 1] + niz[i - 2];
 
             }
-            */
+            Console.BackgroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Write("Fibonaccijev niz za {0} brojeva je: ", n);
+            Console.WriteLine(string.Join(", ", niz));
+            Console.ResetColor();
 
 
-            //Console.WriteLine(string.Join(", ", fiboNiz));
         }
 
         private static void ProsjekOcjena()
