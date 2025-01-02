@@ -30,7 +30,8 @@ namespace Ucenje
                 "Izračun površine pravokutnika",
                 "Pozitivan ili negativan broj?",
                 "Zbroj elemenata niza",
-                "Prosjek ocjena"
+                "Prosjek ocjena",
+                "Fibonaccijev niz"
 
             };
 
@@ -72,7 +73,33 @@ namespace Ucenje
                     ProsjekOcjena();
                     Izbornik();
                     break;
+                case 5:
+                    FibonaccijevNiz();
+                    Izbornik();
+                    break;
             }
+        }
+
+        private static void FibonaccijevNiz()
+        {
+
+            int n = E12Metode.UcitajCijeliBroj("Unesi broj n za ispis prvih n brojeva Fibonaccijeva niza: ");
+            int[] niz = new int[n+2];
+            
+            for (int i = n; i >0; i--)
+            {
+                niz[i] = niz[i + 2] - niz[i+1];
+                Console.WriteLine(string.Join(", ", niz));
+            }
+            
+            /*foreach(int x in niz)
+            {
+
+            }
+            */
+
+
+            //Console.WriteLine(string.Join(", ", fiboNiz));
         }
 
         private static void ProsjekOcjena()
@@ -106,12 +133,12 @@ namespace Ucenje
             int[] niz = new int[brojOcjena];
             int sum = 0;
 
-            for (int i = 0; i < (brojOcjena); i++)
+            for (int i = 0; i < brojOcjena; i++)
             {
                 int ocjena = E12Metode.UcitajCijeliBroj($"Unesi ocjenu broj {i + 1}: ");
                 niz[i] = ocjena;
                 sum += ocjena;
-                
+
             }
             decimal prosjek = (decimal)sum / brojOcjena;
             prosjek = Math.Round(prosjek, 2);
@@ -174,7 +201,7 @@ namespace Ucenje
             Console.WriteLine($"Zbroj elemenata ovog niza je {sum}.");
             Console.ResetColor();
 
-            
+
         }
 
         private static void IzracunPovrsinePravokutnika()
