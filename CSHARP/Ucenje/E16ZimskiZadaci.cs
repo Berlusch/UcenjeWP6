@@ -82,8 +82,25 @@ namespace Ucenje
 
         private static void FibonaccijevNiz()
         {
+            int n;
+            while (true)
+            {
+                try
+                {
+                    n = E12Metode.UcitajCijeliBroj("Unesite broj n za ispis prvih n brojeva Fibonaccijeva niza (2-20): ");
+                    if (n < 2 || n > 20)
+                    {
+                        Console.WriteLine("Unešeni broj je izvan raspona, pokušajte ponovno!");
+                        continue;
+                    }
+                    break;
+                }
 
-            int n = E12Metode.UcitajCijeliBroj("Unesi broj n za ispis prvih n brojeva Fibonaccijeva niza: ");
+                catch
+                {
+                    
+                }
+            }
             int[] niz = new int[n];
             niz[0] = 1;
             niz[1] = 1;
@@ -95,7 +112,14 @@ namespace Ucenje
             }
             Console.BackgroundColor = ConsoleColor.Green;
             Console.ForegroundColor = ConsoleColor.Black;
-            Console.Write("Prvih {0} brojeva Fibonaccijeva niza: ", n);
+            if (n <= 4)
+            {
+                Console.Write("Prva {0} broja Fibonaccijeva niza: ", n);
+            }
+            else
+            {
+                Console.Write("Prvih {0} brojeva Fibonaccijeva niza: ", n);
+            }
             Console.WriteLine(string.Join(", ", niz));
             Console.ResetColor();
 
