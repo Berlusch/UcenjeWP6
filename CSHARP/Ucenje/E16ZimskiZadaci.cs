@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Runtime.Versioning;
 using System.Text;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 
 namespace Ucenje
@@ -34,7 +35,8 @@ namespace Ucenje
                 "Prosjek ocjena",
                 "Fibonaccijev niz",
                 "Preokret stringa",
-                "Brojanje samoglasnika"
+                "Brojanje samoglasnika",
+                "Pretvorba temperature"
 
             };
 
@@ -88,7 +90,45 @@ namespace Ucenje
                     BrojanjeSamoglasnika();
                     Izbornik();
                     break;
+                case 8:
+                    PretvorbaTemperature();
+                    Izbornik();
+                    break;
             }
+        }
+
+        private static void PretvorbaTemperature()
+        {
+            NaslovPrograma("Pretvorba temperature");
+            switch(E12Metode.UcitajCijeliBroj("Odaberite opciju pretvorbe temperature: ", 0, 2))
+            {
+                case 0:
+                    break;
+                case 1:
+                    Console.WriteLine("1. Pretvorba °C u °F");
+                    CelzijFahrenheit();
+                    break;
+                case 2:
+                    Console.WriteLine("2. Pretvorba °F u °C");
+                    FahrenheitCelzij();
+                    break;
+                    
+            }
+            
+        }
+
+        private static void FahrenheitCelzij()
+        {
+            double fahrenheit= E12Metode.UcitajCijeliBroj("Unesite temperaturu u °F: ");
+            double celsius = (fahrenheit - 32) / 1.8;
+            Console.WriteLine("{0}°F = {1}°C", fahrenheit, celsius);
+        }
+
+        private static void CelzijFahrenheit()
+        {
+            double celsius = E12Metode.UcitajCijeliBroj("Unesite temperaturu u °C: ");
+            double fahrenheit = (celsius * 1.8) + 32;
+            Console.WriteLine("{0}°C = {1}°F", celsius, fahrenheit);
         }
 
         private static void BrojanjeSamoglasnika()
