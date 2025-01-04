@@ -37,7 +37,8 @@ namespace Ucenje
                 "Preokret stringa",
                 "Brojanje samoglasnika",
                 "Pretvorba temperature",
-                "Sortiranje niza"
+                "Sortiranje niza",
+                "Kalkulator"
 
             };
 
@@ -99,7 +100,54 @@ namespace Ucenje
                     SortiranjeNiza();
                     Izbornik();
                     break;
+                case 10:
+                    Kalkulator();
+                    Izbornik();
+                    break;
             }
+        }
+
+        private static void Kalkulator()
+        {
+            NaslovPrograma("Kalkulator");
+            Console.WriteLine();
+            double x = E12Metode.UcitajCijeliBroj("Unesite prvi broj: ");
+            double y = E12Metode.UcitajCijeliBroj("Unesite drugi broj: ");
+            Console.WriteLine();
+            Console.WriteLine("IZBORNIK");
+            Console.WriteLine();
+            Console.WriteLine("1. Zbrajanje (+)");
+            Console.WriteLine("2. Oduzimanje (-)");
+            Console.WriteLine("3. Množenje (*)");
+            Console.WriteLine("4. Dijeljenje (/)");
+            Console.WriteLine();
+            
+            switch (E12Metode.UcitajCijeliBroj("Odaberite operaciju: ", 1, 4))
+                {
+                case 1:
+                    
+                    Console.WriteLine();
+                    Console.WriteLine("{0} + {1} = {2}", x, y, x + y);
+                    break;
+                case 2:
+                    
+                    Console.WriteLine();
+                    Console.WriteLine("{0} - {1} = {2}", x, y, x - y);
+                    break;
+                case 3:
+                    
+                    Console.WriteLine();
+                    Console.WriteLine("{0} * {1} = {2}", x, y, x * y);
+                    break;
+                case 4:
+                    
+                    Console.WriteLine();
+                    Console.WriteLine("{0} / {1} = {2}", x, y, Math.Round(x/y, 2));
+                    break;
+
+            }
+
+
         }
 
         private static void SortiranjeNiza()
@@ -135,6 +183,11 @@ namespace Ucenje
         private static void PretvorbaTemperature()
         {
             NaslovPrograma("Pretvorba temperature");
+            Console.WriteLine();
+            Console.WriteLine("IZBORNIK");
+            Console.WriteLine("1. Pretvorba °C u °F");
+            Console.WriteLine("2. Pretvorba °F u °C ");
+            Console.WriteLine();
             switch (E12Metode.UcitajCijeliBroj("Odaberite opciju pretvorbe temperature: ", 0, 2))
             {
                 case 0:
