@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.Versioning;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,7 +32,8 @@ namespace Ucenje
                 "Pozitivan ili negativan broj?",
                 "Zbroj elemenata niza",
                 "Prosjek ocjena",
-                "Fibonaccijev niz"
+                "Fibonaccijev niz",
+                "Preokret stringa"
 
             };
 
@@ -77,11 +79,53 @@ namespace Ucenje
                     FibonaccijevNiz();
                     Izbornik();
                     break;
+                case 6:
+                    PreokretStringa();
+                    Izbornik();
+                    break;
             }
+        }
+
+        private static void PreokretStringa()
+        {
+            NaslovPrograma("Preokret stringa");
+            string unos;
+            while (true)
+            {
+                try
+                {
+                    unos = E12Metode.UcitajString("Unesite pojam ili niz znakova (2-20): ");
+                    if (unos.Length<2 || unos.Length > 20)
+                    {
+                        Console.WriteLine("Broj znakova je izvan dozvoljenog raspona, pokušajte ponovno!");
+                        continue;
+                    }
+                    break;
+                }
+                catch 
+                {
+                    
+                   
+                }
+                
+            }
+            char[] unosZnakovi = new char[unos.Length];
+            for(int i=0; i <unos.Length ; i++)
+            {
+                unosZnakovi[i] = unos[unos.Length-1-i];
+                
+            }
+            Console.WriteLine(string.Join(", ", unosZnakovi));
+
+
+            
+            //Console.WriteLine("Obrnuti redoslijed znakova je {0}", preokret);
+
         }
 
         private static void FibonaccijevNiz()
         {
+            NaslovPrograma("Fibonaccijev niz");
             int n;
             while (true)
             {
@@ -151,7 +195,7 @@ namespace Ucenje
 
             }
             Console.WriteLine();
-            Console.WriteLine("Broj ocjena je {0}. Sad unesi jednu po jednu ocjenu", brojOcjena);
+            Console.WriteLine("Broj ocjena je {0}. Sad unesi jednu po jednu ocjenu: ", brojOcjena);
 
 
             int[] niz = new int[brojOcjena];
@@ -172,9 +216,9 @@ namespace Ucenje
             Console.WriteLine(string.Join(", ", niz));
             Console.BackgroundColor = ConsoleColor.Green;
             Console.ForegroundColor = ConsoleColor.Black;
-            Console.WriteLine($"Prosjek ocjena je {prosjek}");
+            Console.Write($"Prosjek ocjena je {prosjek}");
             Console.ResetColor();
-
+            Console.WriteLine();
         }
 
         private static void ZbrojElemenataNiza()
