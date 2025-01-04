@@ -36,7 +36,8 @@ namespace Ucenje
                 "Fibonaccijev niz",
                 "Preokret stringa",
                 "Brojanje samoglasnika",
-                "Pretvorba temperature"
+                "Pretvorba temperature",
+                "Sortiranje niza"
 
             };
 
@@ -94,13 +95,47 @@ namespace Ucenje
                     PretvorbaTemperature();
                     Izbornik();
                     break;
+                case 9:
+                    SortiranjeNiza();
+                    Izbornik();
+                    break;
             }
+        }
+
+        private static void SortiranjeNiza()
+        {
+            NaslovPrograma("Sortiranje niza");
+            int brojBrojeva = E12Metode.UcitajCijeliBroj("Koliko brojeva želite sortirati?  ");
+            int[] brojevi = new int[brojBrojeva];
+            Console.WriteLine("Unesite {0} brojeva u niz.", brojBrojeva);
+            for (int i = 0; i < brojBrojeva; i++)
+            {
+                int broj = E12Metode.UcitajCijeliBroj($"Unesite {i + 1}. broj: ");
+                brojevi[i] = broj;
+
+            }
+            Console.WriteLine();
+            Console.Write("Unijeli ste: ");
+            Console.WriteLine(string.Join(", ", brojevi));
+            Console.WriteLine();
+            Console.BackgroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Write("Niz sortiran uzlazno: ");
+            Array.Sort(brojevi);
+            Console.Write(string.Join(", ", brojevi));
+            Console.WriteLine();
+            Console.Write("Niz sortiran silazno: ");
+            Array.Reverse(brojevi);
+            Console.Write(string.Join(", ", brojevi));
+            Console.ResetColor();
+            Console.WriteLine();
+
         }
 
         private static void PretvorbaTemperature()
         {
             NaslovPrograma("Pretvorba temperature");
-            switch(E12Metode.UcitajCijeliBroj("Odaberite opciju pretvorbe temperature: ", 0, 2))
+            switch (E12Metode.UcitajCijeliBroj("Odaberite opciju pretvorbe temperature: ", 0, 2))
             {
                 case 0:
                     break;
@@ -112,14 +147,14 @@ namespace Ucenje
                     Console.WriteLine("2. Pretvorba °F u °C");
                     FahrenheitCelzij();
                     break;
-                    
+
             }
-            
+
         }
 
         private static void FahrenheitCelzij()
         {
-            double fahrenheit= E12Metode.UcitajCijeliBroj("Unesite temperaturu u °F: ");
+            double fahrenheit = E12Metode.UcitajCijeliBroj("Unesite temperaturu u °F: ");
             double celsius = (fahrenheit - 32) / 1.8;
             Console.WriteLine("{0}°F = {1}°C", fahrenheit, celsius);
         }
@@ -139,8 +174,8 @@ namespace Ucenje
             string upis = E12Metode.UcitajString("Unesite riječ ili rečenicu: ");
             foreach (char slovo in upis)
             {
-                if(String.Join("", samoglasnici).Contains(slovo))
-                    {
+                if (String.Join("", samoglasnici).Contains(slovo))
+                {
                     sum += 1;
                 }
             }
