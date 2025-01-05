@@ -111,42 +111,66 @@ namespace Ucenje
         {
             NaslovPrograma("Kalkulator");
             Console.WriteLine();
-            double x = E12Metode.UcitajCijeliBroj("Unesite prvi broj: ");
-            double y = E12Metode.UcitajCijeliBroj("Unesite drugi broj: ");
+            
             Console.WriteLine();
             Console.WriteLine("IZBORNIK");
             Console.WriteLine();
-            Console.WriteLine("1. Zbrajanje (+)");
-            Console.WriteLine("2. Oduzimanje (-)");
-            Console.WriteLine("3. Množenje (*)");
-            Console.WriteLine("4. Dijeljenje (/)");
+            Console.WriteLine("+ (zbrajanje)");
+            Console.WriteLine("- (oduzimanje)");
+            Console.WriteLine("* (množenje)");
+            Console.WriteLine("/ (dijeljenje)");
             Console.WriteLine();
-            
-            switch (E12Metode.UcitajCijeliBroj("Odaberite operaciju: ", 1, 4))
+
+            bool izlaz = false;
+            while (!izlaz)
+            {
+                double x = E12Metode.UcitajCijeliBroj("Unesite prvi broj: ");
+                double y = E12Metode.UcitajCijeliBroj("Unesite drugi broj: ");
+                Console.Write("Odaberite operaciju (+, -, *, / (za izlaz upišite 0): ");
+                char operacija = Console.ReadKey().KeyChar;
+                Console.WriteLine();
+
+                switch (operacija)
                 {
-                case 1:
-                    
-                    Console.WriteLine();
-                    Console.WriteLine("{0} + {1} = {2}", x, y, x + y);
-                    break;
-                case 2:
-                    
-                    Console.WriteLine();
-                    Console.WriteLine("{0} - {1} = {2}", x, y, x - y);
-                    break;
-                case 3:
-                    
-                    Console.WriteLine();
-                    Console.WriteLine("{0} * {1} = {2}", x, y, x * y);
-                    break;
-                case 4:
-                    
-                    Console.WriteLine();
-                    Console.WriteLine("{0} / {1} = {2}", x, y, Math.Round(x/y, 2));
-                    break;
+                    case '+':
+
+                        Console.WriteLine();
+                        Console.WriteLine("{0} + {1} = {2}", x, y, x + y);
+                        Console.WriteLine();
+                        break;
+                    case '-':
+
+                        Console.WriteLine();
+                        Console.WriteLine("{0} - {1} = {2}", x, y, x - y);
+                        Console.WriteLine();
+                        break;
+                    case '*':
+
+                        Console.WriteLine();
+                        Console.WriteLine("{0} * {1} = {2}", x, y, x * y);
+                        Console.WriteLine();
+                        break;
+                    case '/':
+
+                        Console.WriteLine();
+                        Console.WriteLine("{0} / {1} = {2}", x, y, Math.Round(x / y, 2));
+                        Console.WriteLine();
+                        break;
+                    case '0':
+                        Console.WriteLine();
+                        Console.WriteLine("Hvala na korištenju kalkulatora i doviđenja!");
+                        Console.WriteLine();
+                        izlaz = true; 
+                        break;
+                    default:
+                        Console.WriteLine("Nepoznata opcija, pokušajte ponovno!");
+                        break;
+                        
+                        
+
+                }
 
             }
-
 
         }
 
