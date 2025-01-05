@@ -55,7 +55,7 @@ namespace Ucenje
 
 
             string znakovi = SkupOdabranihZnakova(velikaSlova, malaSlova, brojevi, interpunkcija);
-            for (int i = 0; i <= brojLozinki; i++)
+            for (int i = 0; i < brojLozinki; i++)
             {
                 string lozinka = GenerirajLozinku(duzinaLozinke, znakovi);
                 Console.WriteLine();
