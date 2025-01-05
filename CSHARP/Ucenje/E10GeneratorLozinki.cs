@@ -26,17 +26,18 @@ namespace Ucenje
         */
         public static void Izvedi()
         {
+
             Console.WriteLine("Dobro došli u Generator lozinki! Molimo da odaberete sljedeće opcije: ");
             int duzinaLozinke = E12Metode.UcitajCijeliBroj("Dužina lozinke (unesite željeni broj znakova): ");
             int brojLozinki = E12Metode.UcitajCijeliBroj("Upišite željeni broj lozinki: ");
             bool velikaSlova = E12Metode.UcitajBool("Uključena velika slova (DA ili NE): ", "DA");
             bool malaSlova = E12Metode.UcitajBool("Uključena mala slova (DA ili NE): ", "DA");
-            bool brojevi = E12Metode.UcitajBool("Uključeni brojevi (DA ili NE: ", "DA");
+            bool brojevi = E12Metode.UcitajBool("Uključeni brojevi (DA ili NE): ", "DA");
             bool interpunkcija = E12Metode.UcitajBool("Uključeni interpunkcijski znakovi (DA ili NE): ", "DA");
             bool prvoBroj = E12Metode.UcitajBool("Lozinka započinje brojem (DA ili NE): ", "DA");
             if (!prvoBroj)
             {
-                bool prvointerpunkcija = E12Metode.UcitajBool("Lozinka započinje interpunkcijskim znakom (DA ili NE): ", "DA");
+                bool prvoInterpunkcija = E12Metode.UcitajBool("Lozinka započinje interpunkcijskim znakom (DA ili NE): ", "DA");
             }
             else
             {
@@ -55,19 +56,22 @@ namespace Ucenje
 
 
             string znakovi = SkupOdabranihZnakova(velikaSlova, malaSlova, brojevi, interpunkcija);
+
             for (int i = 0; i < brojLozinki; i++)
             {
-                string lozinka = GenerirajLozinku(duzinaLozinke, znakovi);
+                string lozinka = GenerirajLozinku(duzinaLozinke, znakovi, prvoBroj);
                 Console.WriteLine();
                 Console.BackgroundColor = ConsoleColor.Green;
                 Console.ForegroundColor = ConsoleColor.Black;
-                Console.WriteLine($"{i+1}. lozinka: {lozinka}");
+                Console.WriteLine($"{i + 1}. lozinka: {lozinka}");
                 Console.ResetColor();
 
             }
 
 
         }
+
+
         private static string SkupOdabranihZnakova(bool velikaSlova, bool malaSlova, bool brojevi, bool interpunkcija)
         {
             string znakovi = "";
@@ -92,12 +96,30 @@ namespace Ucenje
 
         }
 
-        private static string GenerirajLozinku(int duzinaLozinke, string znakovi)
+        private static string GenerirajLozinku(int duzinaLozinke, string znakovi, bool prvoBroj)
         {
             Random slucajniZnak = new Random();
             char[] lozinka = new char[duzinaLozinke];
+            if (prvoBroj)
+            {
+                char[] brojevi = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+                Random prviZnak = new Random();
+                lozinka[0] = brojevi[prviZnak.Next(brojevi.Length)];
+            }
+            /*if (prvoInterpunkcija)
+            {
+                char[] interpunkcija = { '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '-', '=', '[', ']', '{', '}', '|', ';', ':', ',', '.', '<', '>', '?' };
+                Random prviZnak = new Random();
+                lozinka[0] = interpunkcija[prviZnak.Next(interpunkcija.Length)];
+            }*/
+            else
+            {
+                char[] slova = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+                Random prviZnak = new Random();
+                lozinka[0] = slova[prviZnak.Next(slova.Length)];
+            }
 
-            for (int i = 0; i < duzinaLozinke; i++)
+            for (int i = 1; i < duzinaLozinke; i++)
             {
                 lozinka[i] = znakovi[slucajniZnak.Next(znakovi.Length)];
             }
@@ -105,6 +127,7 @@ namespace Ucenje
             return new string(lozinka);
 
         }
+        
 
     }
 }
