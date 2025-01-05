@@ -525,21 +525,7 @@ namespace Ucenje
     Napiši program koji od korisnika traži da unese dva broja i operaciju (+, -, *, /), a zatim izračunava i ispisuje rezultat. Koristi switch statement za odabir operacije.
 
 
-    Generator lozinki
-    Program od korisnika traži unos podataka:
-    Dužina lozinke
-    Uključena/isključena velika slova
-    Uključena/isključena mala slova
-    Uključeni/isključeni brojevi
-    Uključeni/isključeni interpunkcijski znakovi
-    Lozinka počinje ili ne s brojem
-    Lozinka počinje ili ne s interpunkcijskim znakom
-    Lozinka završava ili ne s brojem
-    Lozinka završava ili ne s interpunkcijskim znakom
-    Lozinka ima/nema ponavljajuće znakove
-    Broj lozinki koje je potrebno generirati
-
-    Shodno unesenim pravilima program generira rezultat (jedna ili više lozinki)
+    
 
 
     Ciklična matrica
