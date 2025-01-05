@@ -2,7 +2,9 @@
 
 using Ucenje;
 
-E16ZimskiZadaci.Izvedi();
+E10GeneratorLozinki.Izvedi();
+
+//E16ZimskiZadaci.Izvedi();
 
 //E15Subota.Izvedi();
 
