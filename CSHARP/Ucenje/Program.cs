@@ -2,7 +2,9 @@
 
 using Ucenje;
 
-E10GeneratorLozinki.Izvedi();
+E10LjubavniKalkulator.Izvedi();
+
+//E10GeneratorLozinki.Izvedi();
 
 //E16ZimskiZadaci.Izvedi();
 
