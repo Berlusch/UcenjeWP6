@@ -20,7 +20,8 @@ namespace Ucenje
 
         public static void Izvedi()
         {
-            Console.WriteLine("Dobro došli u Ljubavni kalkulator!");
+            char srce = '\u2665';
+            Console.WriteLine($"{srce}{srce}{srce} Dobro došli u Ljubavni kalkulator! {srce}{srce}{srce}");
             Console.WriteLine();
             Console.WriteLine("IZBORNIK");
             Console.WriteLine();
@@ -39,6 +40,7 @@ namespace Ucenje
                     izlaz = true;
                     break;
                 }
+
                 else
                 {
                     string ime1 = E12Metode.UcitajString("Unesi svoje ime: ").ToUpper();
@@ -85,43 +87,76 @@ namespace Ucenje
                     }
 
                 }
+                break;
 
             }
         }
 
         private static void LjubavniKalkulator2(int[] imenabrojevi, string ime1, string ime2)
         {
-            int rezultat = ZbrojiSusjedneZnamenke(imenabrojevi);
-            if (rezultat <= 25)
+            char srce = '\u2665';
+            string rezultat = ZbrojiSusjedneZnamenke(imenabrojevi);
+            if (int.Parse(rezultat) <= 25)
                 Console.WriteLine("{0} i {1} imaju ljubavni rezultat {2}%. Nažalost, vi niste jedno za drugo :(", ime1, ime2, rezultat);
-            else if (rezultat > 25 && rezultat <= 50)
+            else if (int.Parse(rezultat) > 25 && int.Parse(rezultat) <= 50)
                 Console.WriteLine("{0} i {1} imaju ljubavni rezultat {2}%. Hm, možda ipak možeš naći nekog boljeg?", ime1, ime2, rezultat);
-            else if (rezultat > 50 && rezultat <= 75)
+            else if (int.Parse(rezultat) > 50 && int.Parse(rezultat) <= 75)
                 Console.WriteLine("{0} i {1} imaju ljubavni rezultat {2}%. Ova kombinacija ima potencijala, samo naprijed!", ime1, ime2, rezultat);
             else
-                Console.WriteLine("{0} i {1} imaju ljubavni rezultat {2}%. Pa ovo je prava ljubav, čestitamo! <3", ime1, ime2, rezultat);
+                Console.WriteLine("{0} i {1} imaju ljubavni rezultat {2}%. Pa ovo je prava ljubav, čestitamo!", ime1, ime2, rezultat);
+
+            for (int i = 1; i <= int.Parse(rezultat); i++)
+                Console.Write($"{srce}");// {srce} {srce} {srce} {srce} {srce} {srce} {srce} {srce} {srce} {srce} {srce}");
+            Console.WriteLine();
 
         }
 
-        private static int ZbrojiSusjedneZnamenke(int[] imenabrojevi)
+        private static string ZbrojiSusjedneZnamenke(int[] broj)
         {
-            int rezultat=0;
-            
-            while (rezultat > 100)
+            List<int> rezultati = new List<int>(broj);
+
+            while (rezultati.Count > 2)
             {
-                for (int i = 0; i < imenabrojevi.Length; i++)
+                List<int> noviRezultati = new List<int>();
+
+                for (int i = 0; i < rezultati.Count; i += 2)
                 {
-                    rezultat = rezultat + imenabrojevi[i] + imenabrojevi[i+1];
-                    
+                    if (i + 1 < rezultati.Count) // Provjera da index ne ode out of range
+                    {
+                        int sum = rezultati[i] + rezultati[i + 1];
+                        noviRezultati.Add(sum);
+                    }
+
                 }
+                //ako je neparan broj znamenki, samo se dodaje posljednja znamenka
+                if (rezultati.Count % 2 != 0)
+                {
+                    noviRezultati.Add(rezultati.Last());
+                }
+                rezultati = noviRezultati;
+                
+
+
+            }
+
+            string rezultat = string.Join("", rezultati);
+            if(rezultat[0] * 10 + rezultat[1] >= 100)
+            {
+                int a = rezultat[0]-'0' + (rezultat[1]-'0');
+                int b = rezultat[1]-'0' + (rezultat[2]-'0');
+                                          
+                rezultat = string.Join("",a, b);
                 Console.WriteLine(rezultat);
+
             }
             return rezultat;
+
         }
 
         private static void LjubavniKalkulator1(int[] imenabrojevi, string ime1, string ime2)
         {
             //Osnovni zadatak - rekurzija
+            char srce = '\u2665';
             string rezultat = ZbrojiZnamenke(imenabrojevi);
             if (int.Parse(rezultat) <= 25)
                 Console.WriteLine("{0} i {1} imaju ljubavni rezultat {2}%. Nažalost, vi niste jedno za drugo :(", ime1, ime2, rezultat);
@@ -132,6 +167,9 @@ namespace Ucenje
             else
                 Console.WriteLine("{0} i {1} imaju ljubavni rezultat {2}%. Pa ovo je prava ljubav, čestitamo! <3", ime1, ime2, rezultat);
 
+            for (int i = 1; i <= int.Parse(rezultat); i++)
+                Console.Write($"{srce}");// {srce} {srce} {srce} {srce} {srce} {srce} {srce} {srce} {srce} {srce} {srce}");
+            Console.WriteLine();
         }
 
         private static string ZbrojiZnamenke(int[] broj)
