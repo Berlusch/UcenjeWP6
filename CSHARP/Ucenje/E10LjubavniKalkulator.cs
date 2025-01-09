@@ -25,7 +25,7 @@ namespace Ucenje
             Console.WriteLine("IZBORNIK");
             Console.WriteLine();
             Console.WriteLine("1. Ljubavni kalkulator (rubno zbrajanje)");
-            Console.WriteLine("2. Fibonaccijev ljubavni kalkulator");
+            Console.WriteLine("2. Ljubavni kalkulator (susjedno zbrajanje");
             Console.WriteLine();
 
             bool izlaz = false;
@@ -77,6 +77,7 @@ namespace Ucenje
                             break;
                         case 2:
                             Console.WriteLine();
+                            LjubavniKalkulator2(imenabrojevi, ime1, ime2);
                             Console.WriteLine();
                             Izvedi();
                             break;
@@ -86,6 +87,36 @@ namespace Ucenje
                 }
 
             }
+        }
+
+        private static void LjubavniKalkulator2(int[] imenabrojevi, string ime1, string ime2)
+        {
+            int rezultat = ZbrojiSusjedneZnamenke(imenabrojevi);
+            if (rezultat <= 25)
+                Console.WriteLine("{0} i {1} imaju ljubavni rezultat {2}%. Nažalost, vi niste jedno za drugo :(", ime1, ime2, rezultat);
+            else if (rezultat > 25 && rezultat <= 50)
+                Console.WriteLine("{0} i {1} imaju ljubavni rezultat {2}%. Hm, možda ipak možeš naći nekog boljeg?", ime1, ime2, rezultat);
+            else if (rezultat > 50 && rezultat <= 75)
+                Console.WriteLine("{0} i {1} imaju ljubavni rezultat {2}%. Ova kombinacija ima potencijala, samo naprijed!", ime1, ime2, rezultat);
+            else
+                Console.WriteLine("{0} i {1} imaju ljubavni rezultat {2}%. Pa ovo je prava ljubav, čestitamo! <3", ime1, ime2, rezultat);
+
+        }
+
+        private static int ZbrojiSusjedneZnamenke(int[] imenabrojevi)
+        {
+            int rezultat=0;
+            
+            while (rezultat > 100)
+            {
+                for (int i = 0; i < imenabrojevi.Length; i++)
+                {
+                    rezultat = rezultat + imenabrojevi[i] + imenabrojevi[i+1];
+                    
+                }
+                Console.WriteLine(rezultat);
+            }
+            return rezultat;
         }
 
         private static void LjubavniKalkulator1(int[] imenabrojevi, string ime1, string ime2)
