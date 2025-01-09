@@ -20,35 +20,77 @@ namespace Ucenje
 
         public static void Izvedi()
         {
-            //Osnovni zadatak - rekurzija
-
             Console.WriteLine("Dobro došli u Ljubavni kalkulator!");
-            string ime1 = E12Metode.UcitajString("Unesi svoje ime: ").ToUpper();
-            string ime2 = E12Metode.UcitajString("Unesi ime svoje simpatije: ").ToUpper();
+            Console.WriteLine();
+            Console.WriteLine("IZBORNIK");
+            Console.WriteLine();
+            Console.WriteLine("1. Ljubavni kalkulator (rubno zbrajanje)");
+            Console.WriteLine("2. Fibonaccijev ljubavni kalkulator");
+            Console.WriteLine();
 
-            char[] imena = (ime1 + ime2).ToCharArray();
-
-            Dictionary<char, int> brojac = new Dictionary<char, int>();
-
-            foreach (char slovo in imena)
+            bool izlaz = false;
+            while (!izlaz)
             {
-                if (brojac.ContainsKey(slovo))
+                int opcija = E12Metode.UcitajCijeliBroj("Odaberi opciju 1 ili 2 (0 za izlaz): ");
+                Console.WriteLine();
+                if (opcija == 0)
                 {
-                    brojac[slovo]++;
+                    Console.WriteLine("Hvala na korištenju Ljubavnog kalkulatora!");
+                    izlaz = true;
+                    break;
                 }
                 else
                 {
-                    brojac[slovo] = 1;
+                    string ime1 = E12Metode.UcitajString("Unesi svoje ime: ").ToUpper();
+                    string ime2 = E12Metode.UcitajString("Unesi ime svoje simpatije: ").ToUpper();
+                    char[] imena = (ime1 + ime2).ToCharArray();
+
+                    Dictionary<char, int> brojac = new Dictionary<char, int>();
+
+                    foreach (char slovo in imena)
+                    {
+                        if (brojac.ContainsKey(slovo))
+                        {
+                            brojac[slovo]++;
+                        }
+                        else
+                        {
+                            brojac[slovo] = 1;
+                        }
+                    }
+                    int[] imenabrojevi = new int[imena.Length];
+
+
+                    for (int i = 0; i < imena.Length; i++)
+                    {
+                        imenabrojevi[i] = brojac[imena[i]];
+                    }
+
+
+                    switch (opcija)
+                    {
+                        case 1:
+                            Console.WriteLine();
+                            LjubavniKalkulator1(imenabrojevi, ime1, ime2);
+                            Console.WriteLine();
+                            Izvedi();
+                            break;
+                        case 2:
+                            Console.WriteLine();
+                            Console.WriteLine();
+                            Izvedi();
+                            break;
+
+                    }
+
                 }
+
             }
-            int[] imenabrojevi = new int[imena.Length];
+        }
 
-
-            for (int i = 0; i < imena.Length; i++)
-            {
-                imenabrojevi[i] = brojac[imena[i]];
-            }
-
+        private static void LjubavniKalkulator1(int[] imenabrojevi, string ime1, string ime2)
+        {
+            //Osnovni zadatak - rekurzija
             string rezultat = ZbrojiZnamenke(imenabrojevi);
             if (int.Parse(rezultat) <= 25)
                 Console.WriteLine("{0} i {1} imaju ljubavni rezultat {2}%. Nažalost, vi niste jedno za drugo :(", ime1, ime2, rezultat);
@@ -58,7 +100,6 @@ namespace Ucenje
                 Console.WriteLine("{0} i {1} imaju ljubavni rezultat {2}%. Ova kombinacija ima potencijala, samo naprijed!", ime1, ime2, rezultat);
             else
                 Console.WriteLine("{0} i {1} imaju ljubavni rezultat {2}%. Pa ovo je prava ljubav, čestitamo! <3", ime1, ime2, rezultat);
-
 
         }
 
@@ -70,10 +111,10 @@ namespace Ucenje
                 return string.Join("", broj);
             }
             int prvi = broj[0];
-            int zadnji = broj[broj.Length-1];
+            int zadnji = broj[broj.Length - 1];
             int sum = prvi + zadnji;
 
-            int[] sredina = new int[broj.Length - 2];
+            int[] sredina = new int[broj.Length - 2];// minus 2 zato što oduzima prvi i zadnji
             Array.Copy(broj, 1, sredina, 0, broj.Length - 2);
             string rezultatSredine = ZbrojiZnamenke(sredina);
             string rezultat = sum.ToString() + rezultatSredine;
@@ -95,3 +136,4 @@ namespace Ucenje
         }
     }
 }
+
