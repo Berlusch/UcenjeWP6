@@ -10,6 +10,35 @@ namespace Ucenje
     internal class E10CiklicnaTablica
     {
 
+        /*Ciklična matrica
+    Napraviti osnovni zadatak prema inicijalnoj slici
+    Dodatno:
+    Osigurati unos brojeva redova i kolona u rasponu 2 do 50
+    Napraviti da nakon završetka generiranja jedne matrice pita želite li napraviti još jednu i tako sve dok ne unese NE
+    Napraviti opcije programa o smjeru kretanja brojeva:
+    1. dolje desno početak u smjeru kazaljke na satu(inicijalni zadatak)
+    2. dolje lijevo početak u smjeru kazaljke na satu
+    3. gore lijevo početak u smjeru kazaljke na satu
+    4. gore desno početak u smjeru kazaljke na satu
+
+    5. dolje desno početak u kontra smjeru kazaljke na satu 
+    6. dolje lijevo početak u kontra smjeru kazaljke na satu
+    7. gore lijevo početak u kontra smjeru kazaljke na satu
+    8. gore desno početak u kontra smjeru kazaljke na satu
+
+    19. sredina(ono što je bio kraj u prvih 8 primjera) lijevo u smjeru kazaljke na satu
+    10. sredina(ono što je bio kraj u prvih 8 primjera) desno u smjeru kazaljke na satu
+    11. sredina(ono što je bio kraj u prvih 8 primjera) gore u smjeru kazaljke na satu
+    12. sredina(ono što je bio kraj u prvih 8 primjera) dolje u smjeru kazaljke na satu
+
+    13. sredina(ono što je bio kraj u prvih 8 primjera) lijevo u kontra smjeru kazaljke na satu
+    14. sredina(ono što je bio kraj u prvih 8 primjera) desno u kontra smjeru kazaljke na satu
+    15. sredina(ono što je bio kraj u prvih 8 primjera) gore u kontra smjeru kazaljke na satu
+    16. sredina(ono što je bio kraj u prvih 8 primjera) dolje u kontra smjeru kazaljke na satu
+
+    Formatirati brojeve da budu potpisati po pravilima matematike: jedinica ispod jedinice, desetica ispod desetice, stotica ispod stotice*/
+
+
         public static void Izvedi()
         {
             int redova = E12Metode.UcitajCijeliBroj("Unesi broj redova: ");
@@ -24,6 +53,7 @@ namespace Ucenje
 
             int[,] tablica = new int[redova, kolona];
 
+            // OSNOVNA CIKLIČNA TABLICA ---------------------------------------------------------
 
             while (brojac <= cilj)
             {
@@ -66,6 +96,8 @@ namespace Ucenje
 
 
         }
+
+        // ISPIŠI TABLICU
         private static void IspisiTablicu(int[,] tablica)
         {
             for (int i = 0; i < tablica.GetLength(0); i++)
