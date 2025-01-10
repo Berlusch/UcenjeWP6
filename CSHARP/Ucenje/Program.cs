@@ -2,7 +2,7 @@
 
 using Ucenje;
 
-E10LjubavniKalkulator.Izvedi();
+//E10LjubavniKalkulator.Izvedi();
 
 //E10GeneratorLozinki.Izvedi();
 
@@ -12,7 +12,7 @@ E10LjubavniKalkulator.Izvedi();
 
 //E14Vjezbanje.Izvedi();
 
-//E10CiklicnaTablica.Izvedi();
+E10CiklicnaTablica.Izvedi();
 
 //E13Z2.Izvedi();
 
