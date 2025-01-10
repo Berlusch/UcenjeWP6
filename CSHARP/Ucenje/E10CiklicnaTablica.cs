@@ -41,8 +41,49 @@ namespace Ucenje
 
         public static void Izvedi()
         {
-            int redova = E12Metode.UcitajCijeliBroj("Unesi broj redova: ");
-            int kolona = E12Metode.UcitajCijeliBroj("Unesi broj kolona: ");
+
+
+            int redova;
+            int kolona;
+
+            while (true)
+            {
+                try
+                {
+                    redova = E12Metode.UcitajCijeliBroj("Unesi broj redova (2-50): ");
+                    if (redova < 2 || redova > 50)
+                    {
+                        Console.WriteLine("Broj nije u dopuštenom rasponu, pokušajte ponovno!");
+                        continue;
+
+                    }
+                    break;
+                    
+                }
+                catch
+                {
+                    Console.WriteLine("Nisi unio cijeli broj!");
+                }
+            }
+
+
+            while (true)
+            {
+                try
+                {
+                    kolona = E12Metode.UcitajCijeliBroj("Unesi broj kolona (2-50): ");
+                    if (kolona < 2 || kolona > 50)
+                    {
+                        Console.WriteLine("Broj nije u dopuštenom rasponu, pokušajte ponovno!");
+                        continue;
+                    }
+                    break;
+                }
+                catch
+                {
+                    Console.WriteLine("Nisi unio cijeli broj!");
+                }
+            }
 
             int cilj = redova * kolona;
             int brojac = 1;
