@@ -203,13 +203,16 @@ namespace Ucenje
 
             string rezultat = string.Join("", rezultati);
             Console.WriteLine(rezultat);
-            if ((rezultat[0] - '0') * 10 + (rezultat[1] - '0') >= 100)
+
+            if (int.Parse(rezultat) >= 100)
             {
-                int a = (rezultat[0] - '0') + (rezultat[1] - '0');
-                int b = (rezultat[1] - '0') + (rezultat[2] - '0');
-
-                rezultat = string.Join("", a);
-
+                do
+                {
+                    int a = (rezultat[0] - '0') + (rezultat[1] - '0');
+                    int b = rezultat[2] - '0';
+                    rezultat = string.Concat("", a, b);
+                }while(int.Parse(rezultat)>100);
+                
 
             }
             return rezultat;
