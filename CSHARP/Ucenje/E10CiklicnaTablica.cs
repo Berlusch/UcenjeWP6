@@ -36,7 +36,7 @@ namespace Ucenje
     15. sredina(ono što je bio kraj u prvih 8 primjera) gore u kontra smjeru kazaljke na satu
     16. sredina(ono što je bio kraj u prvih 8 primjera) dolje u kontra smjeru kazaljke na satu
 
-    Formatirati brojeve da budu potpisati po pravilima matematike: jedinica ispod jedinice, desetica ispod desetice, stotica ispod stotice*/
+    Formatirati brojeve da budu potpisani po pravilima matematike: jedinica ispod jedinice, desetica ispod desetice, stotica ispod stotice*/
 
 
         public static void Izvedi()
@@ -58,7 +58,7 @@ namespace Ucenje
 
                     }
                     break;
-                    
+
                 }
                 catch
                 {
@@ -100,33 +100,25 @@ namespace Ucenje
             {
                 // Dolje desno prema lijevo------------------------------------------------------
                 for (int i = maxDesno; i >= maxLijevo; i--)
-                {
                     tablica[maxDolje, i] = brojac++;
-                }
                 maxDolje--;
                 if (brojac == cilj) break;
 
                 // Lijevo dolje prema gore-------------------------------------------------------------
                 for (int i = maxDolje; i >= maxGore; i--)
-                {
                     tablica[i, maxLijevo] = brojac++;
-                }
                 maxLijevo++;
                 if (brojac == cilj) break;
 
                 // Gore lijevo prema desno-----------------------------------------------------------
                 for (int i = maxLijevo; i <= maxDesno; i++)
-                {
                     tablica[maxGore, i] = brojac++;
-                }
                 maxGore++;
                 if (brojac == cilj) break;
 
                 // Desno gore prema dolje----------------------------------------------------------------
                 for (int i = maxGore; i <= maxDolje; i++)
-                {
                     tablica[i, maxDesno] = brojac++;
-                }
                 maxDesno--;
                 if (brojac == cilj) break;
             }
