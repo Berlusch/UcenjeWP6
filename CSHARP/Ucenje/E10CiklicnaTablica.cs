@@ -99,28 +99,28 @@ namespace Ucenje
             while (brojac <= cilj)
             {
                 // Dolje desno prema lijevo------------------------------------------------------
-                for (int i = maxDesno; i >= maxLijevo; i--)
+                for (int i = maxDesno; i >= maxLijevo && brojac <= cilj; i--)
                     tablica[maxDolje, i] = brojac++;
                 maxDolje--;
-                if (brojac == cilj) break;
+                
 
                 // Lijevo dolje prema gore-------------------------------------------------------------
-                for (int i = maxDolje; i >= maxGore; i--)
+                for (int i = maxDolje; i >= maxGore && brojac <= cilj; i--)
                     tablica[i, maxLijevo] = brojac++;
                 maxLijevo++;
-                if (brojac == cilj) break;
+                
 
                 // Gore lijevo prema desno-----------------------------------------------------------
-                for (int i = maxLijevo; i <= maxDesno; i++)
+                for (int i = maxLijevo; i <= maxDesno && brojac <= cilj; i++)
                     tablica[maxGore, i] = brojac++;
                 maxGore++;
-                if (brojac == cilj) break;
+                
 
                 // Desno gore prema dolje----------------------------------------------------------------
-                for (int i = maxGore; i <= maxDolje; i++)
+                for (int i = maxGore; i <= maxDolje && brojac <= cilj; i++)
                     tablica[i, maxDesno] = brojac++;
                 maxDesno--;
-                if (brojac == cilj) break;
+                
             }
 
             //Ispis tablice-----------------------------------------------------------------------
