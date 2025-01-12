@@ -114,13 +114,14 @@ namespace Ucenje
             Console.WriteLine();
             Console.WriteLine("Sada iz izbornika odaberite opciju ciklične tablice:");
             Console.WriteLine();
+            Console.BackgroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine("IZBORNIK");
-
-
+            Console.ResetColor();
 
 
             string[] programi =
-            {
+{
                 "Osnovna ciklična tablica - dolje desno početak u smjeru kazaljke na satu",
                 "Dolje lijevo početak u smjeru kazaljke na satu",
                 "Gore lijevo početak u smjeru kazaljke na satu",
@@ -160,50 +161,60 @@ namespace Ucenje
 
         private static void OdabirOpcijeIzbornika(int BrojPrograma, int redova, int kolona)
         {
+            int[,] tablica;
+            Console.WriteLine();
             switch (E12Metode.UcitajCijeliBroj("Vaša odabrana opcija ciklične tablice (1-16, 0 za izlaz): ", 0, BrojPrograma))
             {
                 case 0:
                     break;
                 case 1:
-                    Console.WriteLine();
-                    int[,] tablica = OsnovnaCiklicnaTablica(redova, kolona);
+                    tablica = OsnovnaCiklicnaTablica(redova, kolona);
                     IspisiTablicu(tablica);
-                    Console.WriteLine();
-                    Nastavak();
-
                     break;
-                    /*case 2:
-                        TablicaMnozenja();
-                        Izbornik();
-                        break;
-                    case 3:
-                        JedinicnaVrijednost();
-                        Izbornik();
-                        break;
-                    case 4:
-                        BrojZnakovaNazivaMjesta();
-                        Izbornik();
-                        break;
-                    case 5:
-                        ZbrojZnamenkiBroja();
-                        Izbornik();
-                        break;
-                    case 6:
-                        PrebrojavanjeBrojaZnakova();
-                        Izbornik();
-                        break;
-                    case 7:
-                    case 8:
-                    case 9:
+                case 2:
+                    tablica = Tablica2(redova, kolona);
+                    IspisiTablicu(tablica);
+                    break;
+                case 3:
+                    tablica = Tablica3(redova, kolona);
+                    IspisiTablicu(tablica);
+                    break;
+                case 4:
+                    tablica = Tablica4(redova, kolona);
+                    IspisiTablicu(tablica);
+                    break;
+                case 5:
+                    tablica = Tablica5(redova, kolona);
+                    IspisiTablicu(tablica);
+                    break;
+                case 6:
+                    tablica = Tablica6(redova, kolona);
+                    IspisiTablicu(tablica);
+                    break;
+                case 7:
+                    tablica = Tablica7(redova, kolona);
+                    IspisiTablicu(tablica);
+                    break;
+                case 8:
+                    tablica = Tablica8(redova, kolona);
+                    IspisiTablicu(tablica);
+                    break;
+                    /*case 9:
                     case 10:
                     case 11:
                     case 12:
                     case 13:
                     case 14:
                     case 15:
-                    case 16:*/
+                    case 16:
+                default:
+            Console.WriteLine("Nevažeći odabir!");
+            break;*/
 
             }
+
+            Console.WriteLine();
+            Nastavak();
         }
 
 
@@ -223,9 +234,6 @@ namespace Ucenje
                 return false;
             }
         }
-
-
-
 
         private static int[,] OsnovnaCiklicnaTablica(int redova, int kolona)
         {
@@ -270,12 +278,312 @@ namespace Ucenje
             return tablica;
 
 
-
         }
 
-        // ISPIŠI TABLICU
+        // TABLICA 2 ---------------------------------------------------------
+        private static int[,] Tablica2(int redova, int kolona)
+        {
+
+
+            int cilj = redova * kolona;
+            int brojac = 1;
+            int maxLijevo = 0;
+            int maxGore = 0;
+            int maxDesno = kolona - 1;
+            int maxDolje = redova - 1;
+
+            int[,] tablica = new int[redova, kolona];
+
+            while (brojac <= cilj)
+            {
+
+                // Lijevo dolje prema gore-------------------------------------------------------------
+                for (int i = maxDolje; i >= maxGore && brojac <= cilj; i--)
+                    tablica[i, maxLijevo] = brojac++;
+                maxLijevo++;
+
+
+                // Gore lijevo prema desno-----------------------------------------------------------
+                for (int i = maxLijevo; i <= maxDesno && brojac <= cilj; i++)
+                    tablica[maxGore, i] = brojac++;
+                maxGore++;
+
+
+                // Desno gore prema dolje----------------------------------------------------------------
+                for (int i = maxGore; i <= maxDolje && brojac <= cilj; i++)
+                    tablica[i, maxDesno] = brojac++;
+                maxDesno--;
+
+                // Dolje desno prema lijevo------------------------------------------------------
+                for (int i = maxDesno; i >= maxLijevo && brojac <= cilj; i--)
+                    tablica[maxDolje, i] = brojac++;
+                maxDolje--;
+
+            }
+            return tablica;
+        }
+
+        // TABLICA 3 ---------------------------------------------------------
+        private static int[,] Tablica3(int redova, int kolona)
+        {
+
+
+            int cilj = redova * kolona;
+            int brojac = 1;
+            int maxLijevo = 0;
+            int maxGore = 0;
+            int maxDesno = kolona - 1;
+            int maxDolje = redova - 1;
+
+            int[,] tablica = new int[redova, kolona];
+
+            while (brojac <= cilj)
+            {
+
+                // Gore lijevo prema desno-----------------------------------------------------------
+                for (int i = maxLijevo; i <= maxDesno && brojac <= cilj; i++)
+                    tablica[maxGore, i] = brojac++;
+                maxGore++;
+
+
+                // Desno gore prema dolje----------------------------------------------------------------
+                for (int i = maxGore; i <= maxDolje && brojac <= cilj; i++)
+                    tablica[i, maxDesno] = brojac++;
+                maxDesno--;
+
+                // Dolje desno prema lijevo------------------------------------------------------
+                for (int i = maxDesno; i >= maxLijevo && brojac <= cilj; i--)
+                    tablica[maxDolje, i] = brojac++;
+                maxDolje--;
+
+                // Lijevo dolje prema gore-------------------------------------------------------------
+                for (int i = maxDolje; i >= maxGore && brojac <= cilj; i--)
+                    tablica[i, maxLijevo] = brojac++;
+                maxLijevo++;
+
+            }
+            return tablica;
+        }
+
+        // TABLICA 4 ---------------------------------------------------------
+
+        private static int[,] Tablica4(int redova, int kolona)
+        {
+
+
+            int cilj = redova * kolona;
+            int brojac = 1;
+            int maxLijevo = 0;
+            int maxGore = 0;
+            int maxDesno = kolona - 1;
+            int maxDolje = redova - 1;
+
+            int[,] tablica = new int[redova, kolona];
+
+            while (brojac <= cilj)
+            {
+                // Desno gore prema dolje----------------------------------------------------------------
+                for (int i = maxGore; i <= maxDolje && brojac <= cilj; i++)
+                    tablica[i, maxDesno] = brojac++;
+                maxDesno--;
+
+                // Dolje desno prema lijevo------------------------------------------------------
+                for (int i = maxDesno; i >= maxLijevo && brojac <= cilj; i--)
+                    tablica[maxDolje, i] = brojac++;
+                maxDolje--;
+
+                // Lijevo dolje prema gore-------------------------------------------------------------
+                for (int i = maxDolje; i >= maxGore && brojac <= cilj; i--)
+                    tablica[i, maxLijevo] = brojac++;
+                maxLijevo++;
+
+                // Gore lijevo prema desno-----------------------------------------------------------
+                for (int i = maxLijevo; i <= maxDesno && brojac <= cilj; i++)
+                    tablica[maxGore, i] = brojac++;
+                maxGore++;
+
+            }
+            return tablica;
+        }
+
+        // TABLICA 5 ---------------------------------------------------------
+
+        private static int[,] Tablica5(int redova, int kolona)
+        {
+
+
+            int cilj = redova * kolona;
+            int brojac = 1;
+            int maxLijevo = 0;
+            int maxGore = 0;
+            int maxDesno = kolona - 1;
+            int maxDolje = redova - 1;
+
+            int[,] tablica = new int[redova, kolona];
+
+            while (brojac <= cilj)
+            {
+                // Desno dolje prema gore----------------------------------------------------------------
+                for (int i = maxDolje; i >= maxGore && brojac <= cilj; i--)
+                    tablica[i, maxDesno] = brojac++;
+                maxDesno--;
+
+
+                // Gore desno prema lijevo------------------------------------------------------
+                for (int i = maxDesno; i >= maxLijevo && brojac <= cilj; i--)
+                    tablica[maxGore, i] = brojac++;
+                maxGore++;
+
+
+                // Lijevo gore prema dolje-------------------------------------------------------------
+                for (int i = maxGore; i <= maxDolje && brojac <= cilj; i++)
+                    tablica[i, maxLijevo] = brojac++;
+                maxLijevo++;
+
+
+                // Dolje lijevo prema desno-----------------------------------------------------------
+                for (int i = maxLijevo; i <= maxDesno && brojac <= cilj; i++)
+                    tablica[maxDolje, i] = brojac++;
+                maxDolje--;
+
+            }
+            return tablica;
+        }
+
+        // TABLICA 6 ---------------------------------------------------------
+
+        private static int[,] Tablica6(int redova, int kolona)
+        {
+
+
+            int cilj = redova * kolona;
+            int brojac = 1;
+            int maxLijevo = 0;
+            int maxGore = 0;
+            int maxDesno = kolona - 1;
+            int maxDolje = redova - 1;
+
+            int[,] tablica = new int[redova, kolona];
+
+            while (brojac <= cilj)
+            {
+                // Gore desno prema lijevo------------------------------------------------------
+                for (int i = maxDesno; i >= maxLijevo && brojac <= cilj; i--)
+                    tablica[maxGore, i] = brojac++;
+                maxGore++;
+
+
+                // Lijevo gore prema dolje-------------------------------------------------------------
+                for (int i = maxGore; i <= maxDolje && brojac <= cilj; i++)
+                    tablica[i, maxLijevo] = brojac++;
+                maxLijevo++;
+
+
+                // Dolje lijevo prema desno-----------------------------------------------------------
+                for (int i = maxLijevo; i <= maxDesno && brojac <= cilj; i++)
+                    tablica[maxDolje, i] = brojac++;
+                maxDolje--;
+
+                // Desno dolje prema gore----------------------------------------------------------------
+                for (int i = maxDolje; i >= maxGore && brojac <= cilj; i--)
+                    tablica[i, maxDesno] = brojac++;
+                maxDesno--;
+
+            }
+            return tablica;
+        }
+
+        // TABLICA 7 ---------------------------------------------------------
+
+        private static int[,] Tablica7(int redova, int kolona)
+        {
+
+
+            int cilj = redova * kolona;
+            int brojac = 1;
+            int maxLijevo = 0;
+            int maxGore = 0;
+            int maxDesno = kolona - 1;
+            int maxDolje = redova - 1;
+
+            int[,] tablica = new int[redova, kolona];
+
+            while (brojac <= cilj)
+            {
+                // Lijevo gore prema dolje-------------------------------------------------------------
+                for (int i = maxGore; i <= maxDolje && brojac <= cilj; i++)
+                    tablica[i, maxLijevo] = brojac++;
+                maxLijevo++;
+
+
+                // Dolje lijevo prema desno-----------------------------------------------------------
+                for (int i = maxLijevo; i <= maxDesno && brojac <= cilj; i++)
+                    tablica[maxDolje, i] = brojac++;
+                maxDolje--;
+
+                // Desno dolje prema gore----------------------------------------------------------------
+                for (int i = maxDolje; i >= maxGore && brojac <= cilj; i--)
+                    tablica[i, maxDesno] = brojac++;
+                maxDesno--;
+
+                // Gore desno prema lijevo------------------------------------------------------
+                for (int i = maxDesno; i >= maxLijevo && brojac <= cilj; i--)
+                    tablica[maxGore, i] = brojac++;
+                maxGore++;
+
+            }
+            return tablica;
+        }
+
+        // TABLICA 8 ---------------------------------------------------------
+
+        private static int[,] Tablica8(int redova, int kolona)
+        {
+
+
+            int cilj = redova * kolona;
+            int brojac = 1;
+            int maxLijevo = 0;
+            int maxGore = 0;
+            int maxDesno = kolona - 1;
+            int maxDolje = redova - 1;
+
+            int[,] tablica = new int[redova, kolona];
+
+            while (brojac <= cilj)
+            {
+                // Dolje lijevo prema desno-----------------------------------------------------------
+                for (int i = maxLijevo; i <= maxDesno && brojac <= cilj; i++)
+                    tablica[maxDolje, i] = brojac++;
+                maxDolje--;
+
+                // Desno dolje prema gore----------------------------------------------------------------
+                for (int i = maxDolje; i >= maxGore && brojac <= cilj; i--)
+                    tablica[i, maxDesno] = brojac++;
+                maxDesno--;
+
+                // Gore desno prema lijevo------------------------------------------------------
+                for (int i = maxDesno; i >= maxLijevo && brojac <= cilj; i--)
+                    tablica[maxGore, i] = brojac++;
+                maxGore++;
+
+                // Lijevo gore prema dolje-------------------------------------------------------------
+                for (int i = maxGore; i <= maxDolje && brojac <= cilj; i++)
+                    tablica[i, maxLijevo] = brojac++;
+                maxLijevo++;
+
+            }
+            return tablica;
+        }
+
+
+
+
+
+        // ISPIŠI TABLICU-----------------------------------------------------------------------------------------------------------------
         private static void IspisiTablicu(int[,] tablica)
         {
+            Console.WriteLine();
             for (int i = 0; i < tablica.GetLength(0); i++)
             {
                 for (int j = 0; j < tablica.GetLength(1); j++)
