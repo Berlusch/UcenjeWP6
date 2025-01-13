@@ -130,14 +130,14 @@ namespace Ucenje
                 "Dolje lijevo početak, u kontra smjeru kazaljke na satu",
                 "Gore lijevo početak, u kontra smjeru kazaljke na satu",
                 "Gore desno početak, u kontra smjeru kazaljke na satu",
-                "Sredina početak(zadnji broj), lijevo u smjeru kazaljke na satu",
-                "Sredina početak(zadnji broj), desno u smjeru kazaljke na satu",
-                "Sredina početak(zadnji broj), gore u smjeru kazaljke na satu",
-                "Sredina početak(zadnji broj), dolje u smjeru kazaljke na satu",
-                "Sredina početak(zadnji broj), lijevo u kontra smjeru kazaljke na satu",
+                "Sredina početak(zadnji broj), cilj donji desni ugao, u smjeru kazaljke na satu",
+                "Sredina početak(zadnji broj), cilj gornji desni ugao, u smjeru kazaljke na satu"
+                /*"Sredina početak(zadnji broj), cilj gornji desni ugao, u smjeru kazaljke na satu",
+                "Sredina početak(zadnji broj), cilj gornji desni ugao, u smjeru kazaljke na satu",
+                "Sredina početak(zadnji broj), cilj gornji desni ugao, u smjeru kazaljke na satu",
                 "Sredina početak(zadnji broj), desno u kontra smjeru kazaljke na satu",
                 "Sredina početak(zadnji broj), gore u kontra smjeru kazaljke na satu",
-                "Sredina početak(zadnji broj), dolje u kontra smjeru kazaljke na satu"
+                "Sredina početak(zadnji broj), dolje u kontra smjeru kazaljke na satu"*/
             };
 
             Console.WriteLine();
@@ -203,25 +203,35 @@ namespace Ucenje
                     tablica = Tablica9(redova, kolona);
                     IspisiTablicu(tablica);
                     break;
-
-                    /*case 10:
-                    case 11:
-                    case 12:
-                    case 13:
-                    case 14:
-                    case 15:
-                    case 16:
+                case 10:
+                    tablica = Tablica10(redova, kolona);
+                    IspisiTablicu(tablica);
+                    break;
+                case 11:
+                    tablica = Tablica10(redova, kolona);
+                    IspisiTablicu(tablica);
+                    break;
+                case 12:
+                    tablica = Tablica10(redova, kolona);
+                    IspisiTablicu(tablica);
+                    break;
+                case 13:
+                    tablica = Tablica10(redova, kolona);
+                    IspisiTablicu(tablica);
+                    break;
+                case 14:
+                    tablica = Tablica10(redova, kolona);
+                    IspisiTablicu(tablica);
+                    break;
                 default:
-            Console.WriteLine("Nevažeći odabir!");
-            break;*/
+                    Console.WriteLine("Nevažeći odabir!");
+                    break;
 
             }
 
             Console.WriteLine();
             Nastavak();
         }
-
-
 
 
         private static bool Nastavak()
@@ -239,10 +249,9 @@ namespace Ucenje
             }
         }
 
+        // OSNOVNA CIKLIČNA TABLICA ---------------------------------------------------------
         private static int[,] OsnovnaCiklicnaTablica(int redova, int kolona)
         {
-            // OSNOVNA CIKLIČNA TABLICA ---------------------------------------------------------
-
             int cilj = redova * kolona;
             int brojac = 1;
             int maxLijevo = 0;
@@ -586,7 +595,7 @@ namespace Ucenje
         private static int[,] Tablica9(int redova, int kolona)
         {
             int cilj = 1;
-            int brojac = redova* kolona;
+            int brojac = redova * kolona;
             int maxLijevo = 0;
             int maxGore = 0;
             int maxDesno = kolona - 1;
@@ -623,7 +632,49 @@ namespace Ucenje
             return tablica;
         }
 
-        
+        //TABLICA 10--------------------------------------------------
+
+        private static int[,] Tablica10(int redova, int kolona)
+        {
+
+
+            int cilj = 1;
+            int brojac = redova * kolona;
+            int maxLijevo = 0;
+            int maxGore = 0;
+            int maxDesno = kolona - 1;
+            int maxDolje = redova - 1;
+
+            int[,] tablica = new int[redova, kolona];
+
+            while (brojac >= cilj)
+            {
+                // Gore desno prema lijevo------------------------------------------------------
+                for (int i = maxDesno; i >= maxLijevo && brojac >= cilj; i--)
+                    tablica[maxGore, i] = brojac--;
+                maxGore++;
+
+
+                // Lijevo gore prema dolje-------------------------------------------------------------
+                for (int i = maxGore; i <= maxDolje && brojac >= cilj; i++)
+                    tablica[i, maxLijevo] = brojac--;
+                maxLijevo++;
+
+
+                // Dolje lijevo prema desno-----------------------------------------------------------
+                for (int i = maxLijevo; i <= maxDesno && brojac >= cilj; i++)
+                    tablica[maxDolje, i] = brojac--;
+                maxDolje--;
+
+                // Desno dolje prema gore----------------------------------------------------------------
+                for (int i = maxDolje; i >= maxGore && brojac >= cilj; i--)
+                    tablica[i, maxDesno] = brojac--;
+                maxDesno--;
+
+            }
+            return tablica;
+        }
+
         // ISPIŠI TABLICU-----------------------------------------------------------------------------------------------------------------
         private static void IspisiTablicu(int[,] tablica)
         {
@@ -637,7 +688,7 @@ namespace Ucenje
 
                     {
                         Console.ForegroundColor = boje[random.Next(boje.Length)];
-                        Console.Write("{0,4}", tablica[i, j] + "  ");
+                        Console.Write("{0,5}", tablica[i, j] + "  ");
                         Thread.Sleep(100);
                     }
 
