@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
@@ -38,7 +40,7 @@ namespace Ucenje
             Console.ResetColor();
             Console.WriteLine();
             Console.WriteLine("1. Ljubavni kalkulator (rubno zbrajanje)");
-            Console.WriteLine("2. Ljubavni kalkulator (susjedno zbrajanje");
+            Console.WriteLine("2. Ljubavni kalkulator (susjedno zbrajanje)");
             Console.WriteLine();
             OdaberiOpciju();
 
@@ -97,15 +99,21 @@ namespace Ucenje
                         {
                             brojac[slovo] = 1;
                         }
+
                     }
+
                     int[] imenabrojevi = new int[imena.Length];
-
-
-                    for (int i = 0; i < imena.Length; i++)
+                    int indeks = 0;
+                    foreach (char znak in imena)
                     {
-                        imenabrojevi[i] = brojac[imena[i]];
+                        int broj = brojac.FirstOrDefault(par => par.Key == znak).Value;
+
+                        // Dodaj vrijednost u niz
+                        imenabrojevi[indeks] = broj;
+                        indeks++;
                     }
 
+                    Console.WriteLine(string.Join("", imenabrojevi));
 
                     switch (opcija)
                     {
@@ -211,8 +219,8 @@ namespace Ucenje
                     int a = (rezultat[0] - '0') + (rezultat[1] - '0');
                     int b = rezultat[2] - '0';
                     rezultat = string.Concat("", a, b);
-                }while(int.Parse(rezultat)>100);
-                
+                } while (int.Parse(rezultat) > 100);
+
 
             }
             return rezultat;
@@ -247,27 +255,63 @@ namespace Ucenje
 
         private static string ZbrojiZnamenke(int[] broj)
         {
+
             //ako je broj znamenki 0-2, vraća taj broj
-            if (broj.Length <= 1)
+            if (broj.Length < 3)
             {
                 return string.Join("", broj);
             }
-            int prvi = broj[0];
-            int zadnji = broj[broj.Length - 1];
-            int sum = prvi + zadnji;
-
-            int[] sredina = new int[broj.Length - 2];// minus 2 zato što oduzima prvi i zadnji
-            Array.Copy(broj, 1, sredina, 0, broj.Length - 2);
-            string rezultatSredine = ZbrojiZnamenke(sredina);
-            string rezultat = sum.ToString() + rezultatSredine;
-            if (rezultat.Length > 2)
+            else if (broj.Length == 3)
             {
-                return ZbrojiZnamenke(stringUBroj(rezultat));
+                return string.Join("", (broj + broj[1].ToString()));
             }
-            return rezultat;
-        }
+            List<int> noviBroj = new List<int>();
 
-        private static int[] stringUBroj(string broj)
+            // Zbrajanje rubnih znamenki (prvi i zadnji, drugi i predzadnji itd.)
+            for (int i = 0; i < broj.Length / 2; i++)
+
+            {
+                noviBroj.Add(broj[i] + broj[broj.Length - 1 - i]);
+            }
+            
+            // Pretvaranje novog broja u niz brojeva
+            int[] rezultatNiz = noviBroj.ToArray();
+            
+            
+            Console.WriteLine(string.Join("", rezultatNiz));
+
+            // Rekurzivni poziv sa novim nizom dok broj znamenki nije 3 ili manji
+            return ZbrojiZnamenke(rezultatNiz);
+        }
+        /*int[] sredina = new int[broj.Length - 2];// minus 2 zato što oduzima prvi i zadnji
+Array.Copy(broj, 1, sredina, 0, broj.Length - 2);
+if (sredina.Length == 3)
+{
+sredina[1] = 0;
+
+}
+string rezultatSredine = ZbrojiZnamenke(sredina);
+
+string rezultat = sum.ToString() + rezultatSredine;
+if (rezultat.Length < 3)
+{
+return rezultat;
+
+}
+else
+{
+int[] rezultatNiz = rezultat.Select(c => c - '0').ToArray();
+return ZbrojiZnamenke(rezultatNiz);
+}*/
+
+
+
+
+
+
+
+
+        private static int[] StringUBroj(string broj)
         {
             int[] brojevi = new int[broj.Length];
             for (int i = 0; i < broj.Length; i++)

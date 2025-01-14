@@ -2,9 +2,9 @@
 
 using Ucenje;
 //nova instanca klase program
-new Ucenje.E17KlasaObjekt.Program();
+//new Ucenje.E17KlasaObjekt.Program();
 
-//E10LjubavniKalkulator.Izvedi();
+E10LjubavniKalkulator.Izvedi();
 
 //E10GeneratorLozinki.Izvedi();
 
