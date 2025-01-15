@@ -253,60 +253,48 @@ namespace Ucenje
 
         }
 
+
         private static string ZbrojiZnamenke(int[] broj)
         {
-            List<int> rezultati = new List<int>(broj);
-
-            while (rezultati.Count > 2)
-            {
-                List<int> noviRezultati = new List<int>();
-
-                for (int i = 0; i < rezultati.Count / 2; i++)
-                {
-                    noviRezultati.Add(rezultati[i]);
-
-                }
-                //ako je neparan broj znamenki, samo se dodaje posljednja znamenka
-                if (rezultati.Count % 2 != 0)
-                {
-                    noviRezultati.Add(rezultati[noviRezultati.Count/2]);
-                }
-                rezultati = noviRezultati;
 
 
-
-            }
-            if (broj.Length < 3)
+            if (broj.Length <= 1)
             {
                 return string.Join("", broj);
             }
 
-            string rezultat = string.Join("", rezultati);
-            Console.WriteLine(rezultat);
 
-            if (int.Parse(rezultat) >= 100)
+            int prvi = broj[0];
+            int zadnji = broj[broj.Length - 1];
+            int sum = prvi + zadnji;
+
+            int[] sredina = new int[broj.Length - 2];
+            Array.Copy(broj, 1, sredina, 0, broj.Length - 2);
+            string rezultatSredine = ZbrojiZnamenke(sredina);
+            string rezultat = sum.ToString() + rezultatSredine;
+            if (rezultat.Length > 2)
             {
-                do
-                {
-                    int a = (rezultat[0] - '0') + (rezultat[1] - '0');
-                    int b = rezultat[2] - '0';
-                    rezultat = string.Concat("", a, b);
-                } while (int.Parse(rezultat) > 100);
-
-
+                return ZbrojiZnamenke(stringUBroj(rezultat));
             }
             return rezultat;
 
-
-
         }
 
+        private static int[] stringUBroj(string broj)
+        {
+            int[] brojevi = new int[broj.Length];
+            for (int i = 0; i < broj.Length; i++)
+            {
+                brojevi[i] = int.Parse(broj[i].ToString());  // Pretvaranje char u int može i ovako: - '0'(ASCII kod)
+            }
+            return brojevi;
+        }
 
     }
-
-    // Rekurzivni poziv sa novim nizom dok broj znamenki nije 3 ili manji
-    //return ZbrojiZnamenke(rezultatNiz);
 }
+
+    
+
 
 
 
