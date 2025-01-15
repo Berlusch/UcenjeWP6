@@ -9,7 +9,7 @@ namespace Ucenje.E17KlasaObjekt.ZavrsniRad
     public class Pas
     {
         public int Sifra { get; set; }
-        public char BrojCipa { get; set; }
+        public int BrojCipa { get; set; }
         public string Ime { get; set; } = "";
         public DateOnly DatumRodjenja { get; set; }
         public string Spol { get; set; } = "";

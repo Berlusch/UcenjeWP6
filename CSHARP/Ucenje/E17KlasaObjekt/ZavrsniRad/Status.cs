@@ -9,6 +9,6 @@ namespace Ucenje.E17KlasaObjekt.ZavrsniRad
     public class Status
     {
         public int Sifra { get; set; }
-        public string Naziv { get; set; }
+        public string Naziv { get; set; } = "";
     }
 }
