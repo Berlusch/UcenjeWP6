@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Ucenje.E17KlasaObjekt.ZavrsniRad
 {
-    public class Pas
+    public class Pas:Entitet
     {
-        public int Sifra { get; set; }
+        
         public int BrojCipa { get; set; }
         public string Ime { get; set; } = "";
         public DateOnly DatumRodjenja { get; set; }

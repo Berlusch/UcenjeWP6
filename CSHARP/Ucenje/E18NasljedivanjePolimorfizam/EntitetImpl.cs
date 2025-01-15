@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ucenje.E17KlasaObjekt.ZavrsniRad
+namespace Ucenje.E18NasljedivanjePolimorfizam
 {
-    public class Status : Entitet
+    internal class EntitetImpl:Entitet
     {
-        public string Naziv { get; set; } = "";
     }
 }

@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Ucenje.E17KlasaObjekt.ZavrsniRad
 {
-    public class Udomitelj
+    public class Udomitelj : Entitet
     {
-        public int Sifra { get; set; }
         public string Ime { get; set; } = "";
         public string Prezime { get; set; } = "";
         public string Adresa { get; set; } = "";

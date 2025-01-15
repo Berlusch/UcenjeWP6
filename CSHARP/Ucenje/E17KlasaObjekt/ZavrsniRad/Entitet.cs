@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ucenje.E18NasljedivanjePolimorfizam
+namespace Ucenje.E17KlasaObjekt.ZavrsniRad
 {
-    //apstraktna klasa je ona klasa koja ne može imati instancu
-    //služi tome da sadržava zajednička svojstva i metode te da ju netko naslijedi
-    public abstract class Entitet: Object //
+    public abstract class Entitet
     {
         public int Sifra { get; set; }
 
