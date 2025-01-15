@@ -15,6 +15,7 @@ namespace Ucenje.E17KlasaObjekt.ZavrsniRad
         public string Spol { get; set; } = "";
         public string Velicina { get; set; } = "";
         public string Boja { get; set; } = "";
+        public string MojaPrica { get; set; } = "";
         public bool Kastracija { get; set; }
         public Status Status { get; set; } = new Status();
     }
