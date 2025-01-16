@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Ucenje.E17KlasaObjekt
 {
     // Klasa je opisnik objekta  -> NAUČITI NAPAMET
-    internal class Osoba
+    public class Osoba
     {
         // klasa sadrži svojstva (property)
         public int Sifra { get; set; } // OOP princip učahurivanja

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ucenje.E18NasljedivanjePolimorfizam
 {
-    internal class EntitetImpl:Entitet
+    public class EntitetImpl:Entitet
     {
     }
 }

@@ -11,7 +11,7 @@ namespace Ucenje.E17KlasaObjekt.ZavrsniRad
         public string Ime { get; set; } = "";
         public string Prezime { get; set; } = "";
         public string Adresa { get; set; } = "";
-        public int Telefon { get; set; }
+        public string? Telefon { get; set; }
         public string Email { get; set; } = "";
     }
 }

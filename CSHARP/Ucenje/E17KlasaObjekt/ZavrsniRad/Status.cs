@@ -8,6 +8,7 @@ namespace Ucenje.E17KlasaObjekt.ZavrsniRad
 {
     public class Status : Entitet
     {
-        public string Naziv { get; set; } = "";
+        public string Naziv { get; set; }
     }
 }
+

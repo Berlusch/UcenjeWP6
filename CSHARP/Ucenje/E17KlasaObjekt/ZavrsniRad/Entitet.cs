@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ucenje.E17KlasaObjekt.ZavrsniRad
 {
-    public abstract class Entitet
+    public class Entitet
     {
         public int Sifra { get; set; }
 
