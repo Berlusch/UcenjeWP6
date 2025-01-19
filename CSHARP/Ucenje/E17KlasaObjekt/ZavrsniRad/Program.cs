@@ -17,20 +17,15 @@ namespace Ucenje.E17KlasaObjekt.ZavrsniRad
             pas.Ime = "Bergo";
             pas.Boja = "Smeđa";
             pas.Velicina = "Veliki";
-            
-            
+
+
 
             Console.WriteLine();
 
 
 
-            osoba = new Osoba()
-            {
-                Sifra = 2,
-                Ime = "Karlo",
-                Prezime = "Lik"
-
-            }
+            
+        }
         
     }
 }
