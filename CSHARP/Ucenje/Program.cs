@@ -2,7 +2,9 @@
 
 using Ucenje;
 
-E100LjubavniKalkulatorObostranaLjubav.Izvedi();
+E100Vjesala.Izvedi();
+
+//E100LjubavniKalkulatorObostranaLjubav.Izvedi();
 
 //new Ucenje.E18NasljedivanjePolimorfizam.Program("E18");
 //nova instanca klase program
