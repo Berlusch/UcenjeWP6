@@ -207,7 +207,7 @@ namespace Ucenje
                     tablica = Tablica10(redova, kolona);
                     IspisiTablicu(tablica);
                     break;
-                case 11:
+                /*case 11:
                     tablica = Tablica10(redova, kolona);
                     IspisiTablicu(tablica);
                     break;
@@ -222,7 +222,7 @@ namespace Ucenje
                 case 14:
                     tablica = Tablica10(redova, kolona);
                     IspisiTablicu(tablica);
-                    break;
+                    break;*/
                 default:
                     Console.WriteLine("Nevažeći odabir!");
                     break;
