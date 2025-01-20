@@ -2,7 +2,9 @@
 
 using Ucenje;
 
-E100Vjesala.Hangman.Izvedi();
+E100BlackJack.Izvedi();
+
+//E100Vjesala.Hangman.Izvedi();
 
 //E100LjubavniKalkulatorObostranaLjubav.Izvedi();
 
