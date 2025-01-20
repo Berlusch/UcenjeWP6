@@ -12,50 +12,55 @@ namespace Ucenje
         public class Hangman
         {
             private static int promasaji = 0;
-
+            
             public static void Izvedi()
             {
-                Console.WriteLine("===========================");
-                Console.WriteLine("Dobro došli u igru Vješala!");
-                Console.WriteLine("===========================");
-                Console.WriteLine();
-                string[] popisRijeci = { "banana", "automobil", "zrakoplov", "eukaliptus", "kuhinja", "filozofija", "zgrada", "šalica",
-                "programiranje","otorinolaringologija","pulover", "djevojčica" };
-                Random random = new Random();
-                string rijec = popisRijeci.OrderBy(r => random.Next()).First();  // Korištenje LINQ za slučajan odabir
-                //Console.WriteLine(rijec);
-                Console.WriteLine();
+
+                Naslov();
+                string rijec = OdaberiRijec();
                 string[] zadatak = new string[rijec.Length];
+                int promasaji = 0;
                 Console.WriteLine("ZADATAK: ");
                 Console.WriteLine();
                 for (int i = 0; i < rijec.Length; i++)
                 {
                     zadatak[i] = "_";
                 }
-
+                NacrtajVjesala(promasaji);
                 Console.WriteLine(string.Join(" ", zadatak));
                 Console.WriteLine();
+                PogodiSlovo(rijec, zadatak);
+                Nastavak();
+
+            }
+
+            private static void PogodiSlovo(string rijec, string[] zadatak)
+            {
+
+                Console.WriteLine();
                 bool igraTraje = true;
+
                 while (igraTraje)
                 {
+
                     string unos = E12Metode.UcitajString("Pogađajte slovo: ").ToLower();
+                    if (string.IsNullOrEmpty(unos))
+                    {
+                        Console.WriteLine("Morate unijeti barem jedno slovo!");
+                        continue;
+                    }
                     char slovo = unos[0];
                     bool pogodjenoSlovo = false;
 
 
-                    foreach (char c in rijec)
+                    for (int i = 0; i < rijec.Length; i++)
                     {
-                        if (slovo == c)
+                        if (rijec[i] == slovo)
                         {
-                            for (int i = 0; i < rijec.Length; i++)
-                            {
-                                if (rijec[i] == slovo)
-                                {
-                                    zadatak[i] = slovo.ToString();
-                                    pogodjenoSlovo = true;
-                                }
-                            }
+                            zadatak[i] = slovo.ToString();
+                            pogodjenoSlovo = true;
                         }
+
                     }
                     if (!pogodjenoSlovo)
                     {
@@ -65,6 +70,7 @@ namespace Ucenje
 
                     NacrtajVjesala(promasaji);
                     Console.WriteLine(string.Join(" ", zadatak));
+
                     // Provjera ako je riječ pogodena
                     if (!string.Join("", zadatak).Contains("_"))
                     {
@@ -78,7 +84,7 @@ namespace Ucenje
                     if (promasaji == 6)
                     {
                         Console.WriteLine();
-                        Console.WriteLine("Nažalost, niste uspjeli, ovo je kraj! Tražena riječ je bila {0}!", rijec);
+                        Console.WriteLine("Nažalost, niste uspjeli, ovo je kraj! Tražena riječ bila je {0}!", rijec);
                         igraTraje = false; // Prekida igru nakon 6 promašaja
 
                     }
@@ -86,8 +92,49 @@ namespace Ucenje
                     Console.WriteLine();
 
                 }
+            }
+
+            private static string OdaberiRijec()
+            {
+                string[] popisRijeci = { "banana", "automobil", "zrakoplov", "eukaliptus", "kuhinja", "filozofija", "zgrada", "šalica",
+                "programiranje","otorinolaringologija","pulover", "djevojčica" };
+                Random random = new Random();
+                string rijec = popisRijeci.OrderBy(r => random.Next()).First();  // Korištenje LINQ za slučajan odabir
+                //Console.WriteLine(rijec);
+                return rijec;
+
 
             }
+
+            private static void Naslov()
+            {
+                Console.WriteLine("===========================");
+                Console.WriteLine("Dobro došli u igru Vješala!");
+                Console.WriteLine("===========================");
+                Console.WriteLine();
+            }
+
+            private static bool Nastavak()
+            {
+                bool nastavak = E12Metode.UcitajBool("Želite li nastaviti? ", "da");
+                if (nastavak)
+                {
+
+                    Console.WriteLine();
+                    Izvedi();
+                    return true;
+
+                }
+                else
+                {
+
+                    Console.WriteLine();
+                    Console.WriteLine("Hvala što ste igrali igru vješala!");
+                    return false;
+
+                }
+            }
+
 
             private static void NacrtajVjesala(int promasaji)
             {
@@ -176,7 +223,7 @@ namespace Ucenje
                 Console.WriteLine();
                 Console.WriteLine(vjesala);
             }
-            
+
         }
 
     }
