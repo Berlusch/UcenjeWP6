@@ -12,10 +12,10 @@ namespace Ucenje
         public class Hangman
         {
             private static int promasaji = 0;
-            
+
             public static void Izvedi()
             {
-
+                Console.OutputEncoding = Encoding.UTF8;
                 Naslov();
                 string rijec = OdaberiRijec();
                 string[] zadatak = new string[rijec.Length];
@@ -31,7 +31,6 @@ namespace Ucenje
                 Console.WriteLine();
                 PogodiSlovo(rijec, zadatak);
                 Nastavak();
-
             }
 
             private static void PogodiSlovo(string rijec, string[] zadatak)

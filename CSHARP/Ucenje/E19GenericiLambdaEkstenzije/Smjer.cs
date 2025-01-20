@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ucenje.E19GenericiLambdaEkstenzije
 {
-    public class Smjer : Entitet,ISucelje,IComparable<Smjer>
+    public class Smjer : Entitet, ISucelje, IComparable<Smjer>
     {
         public string? Naziv { get; set; }
 
@@ -26,6 +26,11 @@ namespace Ucenje.E19GenericiLambdaEkstenzije
         public string StariNaziv()
         {
             return Naziv + " stari" ?? "";
+        }
+
+        public override string ToString()
+        {
+            return Naziv ?? "";
         }
     }
 }
