@@ -2,7 +2,9 @@
 
 using Ucenje;
 
-E100BlackJack.Izvedi();
+new Ucenje.E19GenericiLambdaEkstenzije.Program();
+
+//E100BlackJack.Izvedi();
 
 //E100Vjesala.Hangman.Izvedi();
 
