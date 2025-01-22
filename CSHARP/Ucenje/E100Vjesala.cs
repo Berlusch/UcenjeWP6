@@ -38,6 +38,7 @@ namespace Ucenje
 
                 Console.WriteLine();
                 bool igraTraje = true;
+                promasaji = 0;
 
                 while (igraTraje)
                 {
@@ -50,6 +51,7 @@ namespace Ucenje
                     }
                     char slovo = unos[0];
                     bool pogodjenoSlovo = false;
+                    
 
 
                     for (int i = 0; i < rijec.Length; i++)
@@ -128,7 +130,7 @@ namespace Ucenje
                 {
 
                     Console.WriteLine();
-                    Console.WriteLine("Hvala što ste igrali igru vješala!");
+                    Console.WriteLine("Hvala što ste igrali igru Vješala!");
                     return false;
 
                 }
