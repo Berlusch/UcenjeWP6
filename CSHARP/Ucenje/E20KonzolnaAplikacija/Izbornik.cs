@@ -13,7 +13,7 @@ namespace Ucenje.E20KonzolnaAplikacija
 
         public Izbornik() 
         {
-            Pomocno.DEV = false;
+            Pomocno.DEV = true;
             ObradaSmjer = new ObradaSmjer();
             ObradaPolaznik = new ObradaPolaznik();
             ObradaGrupa = new ObradaGrupa(this);

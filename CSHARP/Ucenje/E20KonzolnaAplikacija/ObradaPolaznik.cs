@@ -115,7 +115,7 @@ namespace Ucenje.E20KonzolnaAplikacija
                 Ime = Pomocno.UcitajString("Unesi ime polaznika", 50, true),
                 Prezime = Pomocno.UcitajString("Unesi prezime polaznika", 50, true),
                 Email = Pomocno.UcitajString("Unesi email polaznika", 50, true),
-                OIB = Pomocno.UcitajString("Unesi OIB polaznika", 50, true)
+                OIB = Pomocno.UcitajString("Unesi OIB polaznika", 11, true)
             });
         }
     }
