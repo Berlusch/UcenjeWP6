@@ -30,7 +30,7 @@ namespace Ucenje.E20KonzolnaAplikacija
             Console.WriteLine("2. Pregled detalja pojedinog smjera");
             Console.WriteLine("3. Unos novog smjera");
             Console.WriteLine("4. Promjena podataka postojećeg smjera");
-            Console.WriteLine("5. Brisanje smjera");
+            Console.WriteLine("5. Obriši smjer");
             Console.WriteLine("6. Povratak na glavni izbornik");
             OdabirOpcijeIzbornika();
         }
@@ -104,7 +104,7 @@ namespace Ucenje.E20KonzolnaAplikacija
             if(Pomocno.UcitajRasponBroja("1. Mjenjaš sve\n2. Pojedinačna promjena", 1, 2) == 1)
             {
                 // poziv API-u da se javi tko ovo koristi
-                odabrani.Sifra = Pomocno.UcitajRasponBroja("Unesi šifru smjera", 1, int.MaxValue);
+                odabrani.Sifra = Pomocno.UcitajRasponBroja("Unesi šifru smjera (ne < 1)", 1, 10000);
                 odabrani.Naziv = Pomocno.UcitajString("Unesi naziv smjera", 50, true);
                 odabrani.Cijena = Pomocno.UcitajDecimalniBroj("Unesi cijenu smjera", 0, 10000);
                 odabrani.IzvodiSeOd = Pomocno.UcitajDatum("Unesi datum od kada se izvodi smjer", true);
@@ -113,11 +113,11 @@ namespace Ucenje.E20KonzolnaAplikacija
             }
             else{
                 // poziv API-u da se javi tko ovo koristi
-                switch (Pomocno.UcitajRasponBroja("1. Šifra\n2. Naziv\n3. Trajanje\n4. Izvodi se od\n" +
+                switch (Pomocno.UcitajRasponBroja("1. Šifra\n2. Naziv\n3. Izvodi se od\n" +
                     "5. Vaučer",1,5))
                 {
                     case 1:
-                    odabrani.Sifra = Pomocno.UcitajRasponBroja("Unesi šifru smjera", 1, int.MaxValue);
+                    odabrani.Sifra = Pomocno.UcitajRasponBroja("Unesi šifru smjera (ne < 1)", 1, 10000);
                     break;
                     case 2:
                         odabrani.Naziv = Pomocno.UcitajString("Unesi naziv smjera", 50, true);
@@ -156,7 +156,7 @@ namespace Ucenje.E20KonzolnaAplikacija
             Console.WriteLine("Unesite tražene podatke o smjeru");
             Smjerovi.Add(new()
             {
-                Sifra = Pomocno.UcitajRasponBroja("Unesi šifru smjera", 1, int.MaxValue),
+                Sifra = Pomocno.UcitajRasponBroja("Unesi šifru smjera (ne<1)", 1, 10000),
                 Naziv = Pomocno.UcitajString("Unesi naziv smjera", 50, true),
                 Cijena = Pomocno.UcitajDecimalniBroj("Unesi cijenu smjera", 0, 10000),
                 IzvodiSeOd = Pomocno.UcitajDatum("Unesi datum od kada se izvodi smjer", true),
