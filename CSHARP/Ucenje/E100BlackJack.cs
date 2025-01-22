@@ -13,12 +13,17 @@ namespace Ucenje
     {
         public static void Izvedi()
         {
+            int userSum = 0;
+            int computerSum = 0;
+            bool gameOn = true;
             GameTitle();
             GameRules();
             int[] cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10];
             List<int> userCards = new List<int>();
             List<int> computerCards = new List<int>();
-            PlayGame(cards, userCards, computerCards);
+            FirstDeal(cards, userCards, computerCards, userSum, computerSum, gameOn);
+            DealAgain(userCards, computerCards, cards, ref userSum, ref computerSum, gameOn);
+            CompareSum(ref computerSum, ref userSum, ref gameOn, userCards, computerCards, cards);
 
 
         }
@@ -59,76 +64,109 @@ namespace Ucenje
 
         }
 
-        private static void PlayGame(int[] cards, List<int> userCards, List<int> computerCards)
+        private static void FirstDeal(int[] cards, List<int> userCards, List<int> computerCards, int userSum, int computerSum, bool gameOn)
         {
-            int userSum = 0;
-            int computerSum = 0;
-            bool gameOn = true;
-            while (gameOn)
-            {
-                for (int i = 1; i <= 2; i++)
-                {
-                    computerCards.Add(DealCards(cards));
-                    userCards.Add(DealCards(cards));
-                }
-                computerSum = computerCards.Sum();
-                userSum = userCards.Sum();
-                Console.WriteLine();
-                Console.WriteLine("Jedna poznata karta djelitelja je {0}, a zbroj Vaših karata je {1}.", computerCards[0], userSum);
-                DealAgain(userCards, computerCards, cards, userSum, computerSum);
-                CompareSum(computerSum, userSum, gameOn);
 
-            }
 
-        }
 
-        private static bool DealAgain(List<int> userCards, List<int> computerCards, int[] cards, int userSum, int computerSum)
-        {
-            bool goOn = E12Metode.UcitajBool("Želite li još jednu kartu? ('da' za ponovno dijeljenje, 'ne' za zadržavanje postojećih karata: )", "da");
-
-            if (!goOn)
-            {
-                return false;
-            }
-            userCards.Add(DealCards(cards));
-            userSum = userCards.Sum();
-            if (computerSum < 17)
+            for (int i = 1; i <= 2; i++)
             {
                 computerCards.Add(DealCards(cards));
-                computerSum = computerCards.Sum();
+                userCards.Add(DealCards(cards));
             }
-            return true;
+            computerSum = computerCards.Sum();
+            userSum = userCards.Sum();
+            Console.WriteLine();
+            Console.WriteLine("Jedna poznata karta djelitelja je {0}, a zbroj Vaših karata je {1}.", computerCards[0], userSum);
+
+
         }
 
-
-
-        private static void CompareSum(int computerSum, int userSum, bool gameOn)
+        private static void DealAgain(List<int> userCards, List<int> computerCards, int[] cards, ref int userSum, ref int computerSum, bool gameOn)
         {
-            if (userSum > 21 && computerSum <= 21)
+            bool goOn = E12Metode.UcitajBool("Želite li još jednu kartu? ('da' za ponovno dijeljenje, 'ne' za zadržavanje postojećih karata  ): ", "da");
+
+            if (goOn)
             {
-                Console.WriteLine("Vaš zbroj je veći od 21, a zbroj karata djelitelja je {} - izgubili ste!", computerSum);
-                gameOn = false;
-            }
-            else if (userSum < 21 && computerSum > 21)
-            {
-                Console.WriteLine("Vaš zbroj je {0}, a zbroj karata djelitelja je veći od 21 - pobijedili ste!", userSum);
-                gameOn = false;
-            }
-            else if (userSum == computerSum)
-            {
-                Console.WriteLine("Rezultat je neriješen!");
-                gameOn = false;
+                // Dijeljenje nove karte korisniku
+                int newCard = DealCards(cards);
+                userCards.Add(newCard);
+                userSum = userCards.Sum();
+
+                Console.WriteLine("Nova karta korisnika: {0}", newCard);
+
+                // Djelitelj povlači kartu ako je njegov zbroj manji od 17
+                if (computerSum < 17)
+                {
+                    int dealerCard = DealCards(cards);
+                    computerCards.Add(dealerCard);
+                    computerSum = computerCards.Sum();
+
+                    Console.WriteLine("Nova karta djelitelja: {0}", dealerCard);
+                }
             }
 
+            // Ispis trenutnog stanja
+            Console.WriteLine("Trenutno stanje djelitelja: {0}", string.Join(",", computerCards));
+            Console.WriteLine("Trenutno stanje korisnika: {0}", string.Join(",", userCards));
+            Console.WriteLine("Zbroj korisnika: {0}, zbroj djelitelja: {1}", userSum, computerSum);
 
+
+        }
+
+        private static void CompareSum(ref int computerSum, ref int userSum, ref bool gameOn, List<int> userCards, List<int> computerCards, int[] cards)
+        {
+            if (userSum > 21)
+            {
+                if (computerSum <= 21)
+                {
+                    Console.WriteLine("\nVaš zbroj je veći od 21, a zbroj karata djelitelja je {0} - izgubili ste!", computerSum);
+                }
+                else
+                {
+                    Console.WriteLine("\nOboje ste prešli 21. Rezultat je neriješen!");
+                }
+                gameOn = false;
+                return; // Završava metodu
+            }
+
+            if (computerSum > 21)
+            {
+                Console.WriteLine("\nVaš zbroj je {0}, a zbroj karata djelitelja je veći od 21 - pobijedili ste!", userSum);
+                gameOn = false;
+                return;
+            }
+
+            if (userSum == computerSum)
+            {
+                Console.WriteLine("\nVaš zbroj je {0}, a zbroj karata djelitelja je {1}. Rezultat je neriješen!", userSum, computerSum);
+                gameOn = false;
+                return;
+            }
+
+            // Ako još nema pobjednika, igra se nastavlja
+            DealAgain(userCards, computerCards, cards, ref userSum, ref computerSum, gameOn);
+
+            // Nakon dodatnih karata, odluči pobjednika
+            if (userSum > computerSum)
+            {
+                Console.WriteLine("Vaš zbroj je {0}, a zbroj karata djelitelja je {1} - pobijedili ste!", userSum, computerSum);
+            }
+            else
+            {
+                Console.WriteLine("Vaš zbroj je {0}, a zbroj karata djelitelja je {1} - izgubili ste!", userSum, computerSum);
+            }
+
+            gameOn = false; // Završava igru
         }
 
         public static int DealCards(int[] cards)
         {
 
             Random random = new Random();
-            int randomCard = random.Next(cards.Length);
-            return randomCard;
+            int randomIndex = random.Next(cards.Length);
+            int card = cards[randomIndex];
+            return card;
         }
 
         private static void GameTitle()
