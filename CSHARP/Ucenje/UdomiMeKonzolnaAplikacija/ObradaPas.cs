@@ -79,14 +79,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
             var p = Psi[
                 Pomocno.UcitajRasponBroja("Odaberi redni broj psa za detalje", 1, Psi.Count) - 1
                 ];
-            Console.WriteLine(Ime);
-            Console.WriteLine(BrojCipa);
-                        Console.WriteLine(DatumRodjenja);
-            
-            Console.WriteLine(ProvjeriKastraciju());
-            
-            Console.WriteLine("Datum zadnje izmjene: " + p.DatumPromjene.Value.ToString("dd. MM. yyyy. HH:mm:ss"));
-            Console.WriteLine("--------------------");
+            DetaljiPsa();
         }
 
         private void ObrisiPostojecegPsa()
