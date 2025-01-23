@@ -12,7 +12,7 @@ namespace Ucenje.E17KlasaObjekt.ZavrsniRad
         public Udomitelj Udomitelj { get; set; } = new Udomitelj();
         public DateOnly DatumUpita { get; set; }
         public string StatusUpita { get; set; } = "";
-        public Pas[]? Psi { get; set; }
-        public Udomitelj[]? Udomitelji { get; set; }
+        public List<Pas>? Psi { get; set; }
+        public List<Udomitelj>? Udomitelji { get; set; }
     }
 }
