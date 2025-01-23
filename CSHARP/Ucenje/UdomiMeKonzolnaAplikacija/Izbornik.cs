@@ -29,17 +29,21 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
 
         private void UcitajPodatke()
         {
-            string docPath =
-         Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string docPath = Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+        "GitHub" // Dodaj podmapu GitHub
+    );
 
-            if (File.Exists(Path.Combine(docPath, "psi.json")))
+            string filePath = Path.Combine(docPath, "psi.json");
+
+            if (File.Exists(filePath))
             {
-                StreamReader file = File.OpenText(Path.Combine(docPath, "psi.json"));
-                ObradaPas.Psi = JsonConvert.DeserializeObject<List<Pas>>(file.ReadToEnd());
-                file.Close();
-
+                using (StreamReader file = File.OpenText(filePath)) // Korištenje using za automatsko zatvaranje
+                {
+                    ObradaPas.Psi = JsonConvert.DeserializeObject<List<Pas>>(file.ReadToEnd());
+                }
             }
-
+            
         }
 
         private void PrikaziIzbornik()
