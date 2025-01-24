@@ -4,20 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ucenje.E17KlasaObjekt.edunova
+namespace Ucenje.UdomiMeKonzolnaAplikacija.Model
 {
-    public class Polaznik
+    public class Udomitelj : Entitet
     {
-        public int Sifra { get; set; }
         public string Ime { get; set; } = "";
         public string Prezime { get; set; } = "";
+        public string Adresa { get; set; } = "";
+        public string? Telefon { get; set; }
         public string Email { get; set; } = "";
-        public string? Oib { get; set; }
-
-        
-        public string ImePrezime()
-        {
-            return Ime + " " + Prezime;
-        }
     }
 }

@@ -2,6 +2,8 @@
 
 using Ucenje;
 
+//new Ucenje.UdomiMeKonzolnaAplikacija.Izbornik();
+
 new Ucenje.E20KonzolnaAplikacija.Izbornik();
 
 //new Ucenje.E19GenericiLambdaEkstenzije.Program();

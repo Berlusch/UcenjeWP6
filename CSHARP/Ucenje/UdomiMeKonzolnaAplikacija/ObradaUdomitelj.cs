@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ucenje.E17KlasaObjekt.ZavrsniRad
+namespace Ucenje.UdomiMeKonzolnaAplikacija
 {
-    public class Status : Entitet
+    internal class ObradaUdomitelj
     {
-        public string? Naziv { get; set; }
     }
 }
-
