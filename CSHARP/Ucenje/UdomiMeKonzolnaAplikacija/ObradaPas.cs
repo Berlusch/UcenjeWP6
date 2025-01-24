@@ -123,8 +123,8 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
                 odabrani.BrojCipa = Pomocno.UcitajString("Unesite broj čipa psa: ", 17, true);
                 odabrani.Datum_Rodjenja = Pomocno.UcitajDatum("Unesite datum rodjenja psa: ", false);
                 odabrani.SpolVrsta = Pomocno.UcitajEnum<Pas.Spol>("Unesi spol (m/ž): ", "m");
-                odabrani.VelicinaPsa = Pomocno.UcitajEnum<Velicina>("Unesi veličinu (veliki/srednji/mali): ","Veliki");
-                odabrani.BojaPsa = Pomocno.UcitajEnum<Boja>("Unesi boju (bijeli, crni, smeđi, šareni): ","Bijeli");
+                odabrani.VelicinaPsa = Pomocno.UcitajEnum<Velicina>("Unesi veličinu (veliki/srednji/mali): ", "Veliki");
+                odabrani.BojaPsa = Pomocno.UcitajEnum<Boja>("Unesi boju (bijeli, crni, smeđi, šareni): ", "Bijeli");
                 odabrani.MojaPrica = Pomocno.UcitajString("Unesi ime psa: ", 500, true);
                 odabrani.Kastracija = Pomocno.UcitajBool("Je li pas kastriran/steriliziran? (DA/NE): ", "da");
                 odabrani.StatusOpis = Pomocno.UcitajEnum<StatusEnum>("Odaberite status (udomljen/rezerviran/slobodan/privremeni smještaj)", "udomljen");
@@ -180,7 +180,12 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
                 Ime = Pomocno.UcitajString("Unesite ime psa: ", 50, true),
                 BrojCipa = Pomocno.UcitajString("Unesite broj čipa psa: ", 17, false),
                 Datum_Rodjenja = Pomocno.UcitajDatum("Unesite datum rođenja psa: ", false),
+                SpolVrsta = Pomocno.UcitajEnum<Pas.Spol>("Unesi spol (m/ž): ", "m"),
+                VelicinaPsa = Pomocno.UcitajEnum<Velicina>("Unesi veličinu (veliki/srednji/mali): ", "Veliki"),
+                BojaPsa = Pomocno.UcitajEnum<Boja>("Unesi boju (bijeli, crni, smeđi, šareni): ", "Bijeli"),
+                MojaPrica = Pomocno.UcitajString("Moja priča: ", 500, true),
                 Kastracija = Pomocno.UcitajBool("Je li pas kastriran/steriliziran? (DA/NE): ", "da"),
+                StatusOpis = Pomocno.UcitajEnum<StatusEnum>("Odaberite status (udomljen/rezerviran/slobodan/privremeni smještaj)", "udomljen"),
                 DatumPromjene = DateTime.Now
             });
         }

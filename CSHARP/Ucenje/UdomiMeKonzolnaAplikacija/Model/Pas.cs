@@ -54,7 +54,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija.Model
             Slobodan,
             PrivremeniSmjestaj
         }
-        public DateTime? DatumPromjene { get; set; }
+        public DateTime DatumPromjene { get; set; }
 
 
 
