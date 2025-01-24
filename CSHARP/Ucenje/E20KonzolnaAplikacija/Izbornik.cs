@@ -40,6 +40,7 @@ namespace Ucenje.E20KonzolnaAplikacija
         private void PrikaziIzbornik()
         {
             Console.WriteLine("Glavni izbornik");
+            Console.WriteLine("--------------------");
             Console.WriteLine("1. Smjerovi");
             Console.WriteLine("2. Polaznici");
             Console.WriteLine("3. Grupe");
@@ -49,7 +50,7 @@ namespace Ucenje.E20KonzolnaAplikacija
 
         private void OdabirOpcijeIzbornika()
         {
-            
+            Console.WriteLine();
             switch(Pomocno.UcitajRasponBroja("Odaberite stavku izbornika", 1, 4))
             {
                 case 1:
