@@ -33,7 +33,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
                     {
                         Console.WriteLine("Uneseni datum ne smije biti prije današnjeg datuma!");
                     }
-                    Console.Write(poruka + ": ");
+                    Console.Write(poruka);
                     d = DateTime.Parse(Console.ReadLine());
                     if (kontrolaPrijeDanasnjegDatuma && d < DateTime.Now)
                     {
@@ -127,5 +127,41 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
                 return s;
             }
         }
+        public static T UcitajEnum<T>(string poruka, string zadanaVrijednost) where T : struct, Enum
+        {
+            Console.WriteLine(poruka);
+
+            // Ako je zadana vrijednost i korisnik pritisne Enter bez unosa, koristi zadanu vrijednost
+            string unos = Console.ReadLine()?.Trim();
+            if (string.IsNullOrEmpty(unos))
+            {
+                // Parsiramo zadanu vrijednost
+                if (Enum.TryParse<T>(zadanaVrijednost, true, out T zadanaEnumVrijednost))
+                {
+                    return zadanaEnumVrijednost;
+                }
+                else
+                {
+                    throw new ArgumentException("Zadana vrijednost nije valjana.");
+                }
+            }
+
+            // Pokušaj parsiranja unosa u enum vrijednost
+            if (Enum.TryParse<T>(unos, true, out T rezultat) && Enum.IsDefined(typeof(T), rezultat))
+            {
+                return rezultat;
+            }
+            else
+            {
+                Console.WriteLine("Pogrešan unos. Pokušajte ponovno.");
+                return UcitajEnum<T>(poruka, zadanaVrijednost); // Rekurzivno ponavljanje za ispravan unos
+            }
+        }
+        public static string BoolToYesNo(bool vrijednost)
+        {
+            return vrijednost ? "da" : "ne";
+        }
+
+
     }
 }

@@ -7,7 +7,7 @@ using Ucenje.UdomiMeKonzolnaAplikacija.Model;
 
 namespace Ucenje.UdomiMeKonzolnaAplikacija
 {
-    internal class ObradaPas:Pas
+    internal class ObradaPas : Pas
     {
 
         public List<Pas> Psi { get; set; }
@@ -79,7 +79,21 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
             var p = Psi[
                 Pomocno.UcitajRasponBroja("Odaberi redni broj psa za detalje", 1, Psi.Count) - 1
                 ];
-            DetaljiPsa();
+            Console.WriteLine("--------------------");
+            Console.WriteLine("Detalji psa: ");
+            Console.WriteLine();
+            Console.WriteLine("Šifra: " + p.Sifra);
+            Console.WriteLine("Broj čipa: " + p.BrojCipa);
+            Console.WriteLine("Ime: " + p.Ime);
+            Console.WriteLine("Datum rođenja: " + p.Datum_Rodjenja);
+            Console.WriteLine("Spol: " + p.SpolVrsta);
+            Console.WriteLine("Veličina: " + p.VelicinaPsa);
+            Console.WriteLine("Boja: " + p.BojaPsa);
+            Console.WriteLine("Moja priča: " + p.MojaPrica);
+            Console.WriteLine($"Kastracija: {Pomocno.BoolToYesNo(p.Kastracija)}");
+            Console.WriteLine("Status: " + p.StatusOpis);
+            //Console.WriteLine("Datum zadnje izmjene: " + p.DatumPromjene.Value.ToString("dd. MM. yyyy. HH:mm:ss"));
+            Console.WriteLine("--------------------");
         }
 
         private void ObrisiPostojecegPsa()
@@ -104,12 +118,17 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
             if (Pomocno.UcitajRasponBroja("1. Mjenjaš sve\n2. Pojedinačna promjena", 1, 2) == 1)
             {
                 // poziv API-u da se javi tko ovo koristi
-                odabrani.Sifra = Pomocno.UcitajRasponBroja("Unesi šifru psa: ", 1, 10000);
-                odabrani.Ime = Pomocno.UcitajString("Unesi ime psa: ", 50, true);
-                odabrani.BrojCipa = Pomocno.UcitajString("Unesi broj čipa psa: ",17,true );
-                odabrani.DatumRodjenja = Pomocno.UcitajDatum("Unesi datum rodjenja psa: ", false);
+                odabrani.Sifra = Pomocno.UcitajRasponBroja("Unesite šifru psa: ", 1, 10000);
+                odabrani.Ime = Pomocno.UcitajString("Unesite ime psa: ", 50, true);
+                odabrani.BrojCipa = Pomocno.UcitajString("Unesite broj čipa psa: ", 17, true);
+                odabrani.Datum_Rodjenja = Pomocno.UcitajDatum("Unesite datum rodjenja psa: ", false);
+                odabrani.SpolVrsta = Pomocno.UcitajEnum<Pas.Spol>("Unesi spol (m/ž): ", "m");
+                odabrani.VelicinaPsa = Pomocno.UcitajEnum<Velicina>("Unesi veličinu (veliki/srednji/mali): ","Veliki");
+                odabrani.BojaPsa = Pomocno.UcitajEnum<Boja>("Unesi boju (bijeli, crni, smeđi, šareni): ","Bijeli");
+                odabrani.MojaPrica = Pomocno.UcitajString("Unesi ime psa: ", 500, true);
                 odabrani.Kastracija = Pomocno.UcitajBool("Je li pas kastriran/steriliziran? (DA/NE): ", "da");
-                odabrani.MojaPrica =Pomocno.UcitajString("Unesi ime psa: ", 500, true);
+                odabrani.StatusOpis = Pomocno.UcitajEnum<StatusEnum>("Odaberite status (udomljen/rezerviran/slobodan/privremeni smještaj)", "udomljen");
+
             }
             else
             {
@@ -157,10 +176,10 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
             Console.WriteLine("Unesite tražene podatke o psu");
             Psi.Add(new()
             {
-                Sifra = Pomocno.UcitajRasponBroja("Unesi šifru psa: ", 1, 10000),
-                Ime = Pomocno.UcitajString("Unesi ime psa: ", 50, true),
-                BrojCipa = Pomocno.UcitajString("Unesi broj čipa psa: ", 17, false),
-                DatumRodjenja = Pomocno.UcitajDatum("Unesi datum rodjenja psa: ", false),
+                Sifra = Pomocno.UcitajRasponBroja("Unesite šifru psa: ", 1, 10000),
+                Ime = Pomocno.UcitajString("Unesite ime psa: ", 50, true),
+                BrojCipa = Pomocno.UcitajString("Unesite broj čipa psa: ", 17, false),
+                Datum_Rodjenja = Pomocno.UcitajDatum("Unesite datum rođenja psa: ", false),
                 Kastracija = Pomocno.UcitajBool("Je li pas kastriran/steriliziran? (DA/NE): ", "da"),
                 DatumPromjene = DateTime.Now
             });
