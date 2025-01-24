@@ -149,7 +149,7 @@ namespace Ucenje.E20KonzolnaAplikacija
                 }
                 else
                 {
-                    lista.Add(Izbornik.ObradaPolaznik.Polaznici[ odabranaOpcija]);
+                    lista.Add(Izbornik.ObradaPolaznik.Polaznici[ odabranaOpcija-1]);
                 }
                
             }
