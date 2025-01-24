@@ -7,7 +7,7 @@ using Ucenje.UdomiMeKonzolnaAplikacija.Model;
 
 namespace Ucenje.UdomiMeKonzolnaAplikacija
 {
-    internal class ObradaPas : Pas
+    internal class ObradaPas:Pas
     {
 
         public List<Pas> Psi { get; set; }
