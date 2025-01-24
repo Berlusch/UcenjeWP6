@@ -83,10 +83,10 @@ namespace Ucenje.E20KonzolnaAplikacija
                 Pomocno.UcitajRasponBroja("Odaberi redni broj smjera", 1, Izbornik.ObradaSmjer.Smjerovi.Count) - 1];
 
             g.Predavac = Pomocno.UcitajString("Unesi ime i prezime predavača", 50, true);
-            g.MaksimalnoPolaznika = Pomocno.UcitajRasponBroja("Unesi maksimalno polaznika", 1, 30);
+            g.VelicinaGrupe = Pomocno.UcitajRasponBroja("Unesi Veličinu grupe", 1, 30);
 
             // polaznici
-            g.Polaznici = UcitajPolaznike((int)g.MaksimalnoPolaznika);
+            g.Polaznici = UcitajPolaznike((int)g.VelicinaGrupe);
 
 
         }
@@ -124,10 +124,10 @@ namespace Ucenje.E20KonzolnaAplikacija
                 Pomocno.UcitajRasponBroja("Odaberi redni broj smjera",1, Izbornik.ObradaSmjer.Smjerovi.Count) - 1];
             
             g.Predavac = Pomocno.UcitajString("Unesi ime i prezime predavača", 50, true);
-            g.MaksimalnoPolaznika = Pomocno.UcitajRasponBroja("Unesi maksimalno polaznika", 1, 30);
+            g.VelicinaGrupe = Pomocno.UcitajRasponBroja("Unesi veličinu grupe", 1, 30);
 
             // polaznici
-            g.Polaznici = UcitajPolaznike((int)g.MaksimalnoPolaznika);
+            g.Polaznici = UcitajPolaznike((int)g.VelicinaGrupe);
 
             Grupe.Add(g);
         }
@@ -149,7 +149,7 @@ namespace Ucenje.E20KonzolnaAplikacija
                 }
                 else
                 {
-                    lista.Add(Izbornik.ObradaPolaznik.Polaznici[ odabranaOpcija]);
+                    lista.Add(Izbornik.ObradaPolaznik.Polaznici[ odabranaOpcija-1]);
                 }
                
             }
