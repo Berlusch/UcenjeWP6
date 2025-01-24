@@ -26,6 +26,7 @@ namespace Ucenje.E20KonzolnaAplikacija
         public void PrikaziIzbornik()
         {
             Console.WriteLine("Izbornik za rad s smjerovima");
+            Console.WriteLine("----------------------------------");
             Console.WriteLine("1. Pregled svih smjerova");
             Console.WriteLine("2. Pregled detalja pojedinog smjera");
             Console.WriteLine("3. Unos novog smjera");
@@ -37,6 +38,7 @@ namespace Ucenje.E20KonzolnaAplikacija
 
         private void OdabirOpcijeIzbornika()
         {
+            Console.WriteLine();
            switch(Pomocno.UcitajRasponBroja("Odaberite stavku izbornika", 1, 6))
             {
                 case 1:
