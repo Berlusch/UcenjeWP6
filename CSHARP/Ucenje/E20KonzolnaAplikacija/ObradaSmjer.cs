@@ -26,7 +26,6 @@ namespace Ucenje.E20KonzolnaAplikacija
         public void PrikaziIzbornik()
         {
             Console.WriteLine("Izbornik za rad s smjerovima");
-            Console.WriteLine("----------------------------------");
             Console.WriteLine("1. Pregled svih smjerova");
             Console.WriteLine("2. Pregled detalja pojedinog smjera");
             Console.WriteLine("3. Unos novog smjera");
@@ -38,7 +37,6 @@ namespace Ucenje.E20KonzolnaAplikacija
 
         private void OdabirOpcijeIzbornika()
         {
-            Console.WriteLine();
            switch(Pomocno.UcitajRasponBroja("Odaberite stavku izbornika", 1, 6))
             {
                 case 1:
@@ -122,7 +120,7 @@ namespace Ucenje.E20KonzolnaAplikacija
                     odabrani.Sifra = Pomocno.UcitajRasponBroja("Unesi šifru smjera", 1, int.MaxValue);
                     break;
                     case 2:
-                        odabrani.Naziv = Pomocno.UcitajString("Unesi naziv smjera", 50, true);
+                        odabrani.Naziv = Pomocno.UcitajString("Unesi naziv smjera", 50, true, odabrani.Naziv);
                         break;
                     // ... ostali
                     case 5:

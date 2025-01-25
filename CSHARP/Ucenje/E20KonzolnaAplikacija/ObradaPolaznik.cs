@@ -95,10 +95,15 @@ namespace Ucenje.E20KonzolnaAplikacija
 
         public void PrikaziPolaznike()
         {
+            PrikaziPolaznike(Polaznici, "Popis polaznika u aplikaciji");
+        }
+
+        public void PrikaziPolaznike(List<Polaznik> lista, string naslov)
+        {
             Console.WriteLine("*****************************");
-            Console.WriteLine("Polaznici u aplikaciji");
+            Console.WriteLine(naslov);
             int rb = 0;
-            foreach (var p in Polaznici)
+            foreach (var p in lista)
             {
                 Console.WriteLine(++rb + ". " + p.Ime + " " + p.Prezime); // prepisati metodu toString
             }
