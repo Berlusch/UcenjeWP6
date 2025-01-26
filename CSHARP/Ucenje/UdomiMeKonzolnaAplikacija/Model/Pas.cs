@@ -15,12 +15,12 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija.Model
         public string Pasmina { get; set; } = "";
         public DateTime Datum_Rodjenja { get; set; }
 
-        [JsonConverter(typeof(StringEnumConverter))]
+        
         public Spol SpolVrsta { get; set; }
 
         public enum Spol { M, Ž }
 
-        [JsonConverter(typeof(StringEnumConverter))]
+        
         public Velicina VelicinaPsa { get; set; }
 
         public enum Velicina
@@ -30,7 +30,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija.Model
             Mali
         }
 
-        [JsonConverter(typeof(StringEnumConverter))]
+        
         public Boja BojaPsa { get; set; }
 
         public enum Boja
@@ -44,7 +44,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija.Model
         public string MojaPrica { get; set; } = "";
         public bool Kastracija { get; set; }
 
-        [JsonConverter(typeof(StringEnumConverter))]
+
         public StatusEnum StatusOpis { get; set; }
 
         public enum StatusEnum
@@ -54,6 +54,8 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija.Model
             Slobodan,
             PrivremeniSmjestaj
         }
+
+
         public DateTime DatumPromjene { get; set; }
 
 

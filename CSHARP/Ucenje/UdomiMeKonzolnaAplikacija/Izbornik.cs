@@ -41,9 +41,10 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
                 using (StreamReader file = File.OpenText(filePath)) // Korištenje using za automatsko zatvaranje
                 {
                     ObradaPas.Psi = JsonConvert.DeserializeObject<List<Pas>>(file.ReadToEnd());
+
                 }
             }
-            
+
         }
 
         private void PrikaziIzbornik()
@@ -59,7 +60,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
 
         private void OdabirOpcijeIzbornika()
         {
-            Console.WriteLine("----------------------------------------");          
+            Console.WriteLine("----------------------------------------");
             Console.WriteLine();
 
             switch (Pomocno.UcitajRasponBroja("Odaberite stavku izbornika", 1, 4))
@@ -93,14 +94,16 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
                 return;
             }
 
-            //Console.WriteLine(JsonConvert.SerializeObject(ObradaSmjer.Smjerovi));
+            //Console.WriteLine(JsonConvert.SerializeObject(ObradaPas.Psi));
+            else
+            {
+                string docPath = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "GitHub");
 
-            string docPath =
-          Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-            StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "psi.json"));
-            outputFile.WriteLine(JsonConvert.SerializeObject(ObradaPas.Psi));
-            outputFile.Close();
+                StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "psi.json"));
+                outputFile.WriteLine(JsonConvert.SerializeObject(ObradaPas.Psi));
+                outputFile.Close();
+            }
         }
 
         private void PozdravnaPoruka()

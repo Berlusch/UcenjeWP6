@@ -127,24 +127,13 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
                 return s;
             }
         }
-        public static T UcitajEnum<T>(string poruka, string zadanaVrijednost) where T : struct, Enum
+        public static T UcitajEnum<T>(string poruka) where T : struct, Enum
         {
             Console.WriteLine(poruka);
 
             // Ako je zadana vrijednost i korisnik pritisne Enter bez unosa, koristi zadanu vrijednost
-            string unos = Console.ReadLine()?.Trim();
-            if (string.IsNullOrEmpty(unos))
-            {
-                // Parsiramo zadanu vrijednost
-                if (Enum.TryParse<T>(zadanaVrijednost, true, out T zadanaEnumVrijednost))
-                {
-                    return zadanaEnumVrijednost;
-                }
-                else
-                {
-                    throw new ArgumentException("Zadana vrijednost nije valjana.");
-                }
-            }
+            string unos = Console.ReadLine().Trim();
+
 
             // Pokušaj parsiranja unosa u enum vrijednost
             if (Enum.TryParse<T>(unos, true, out T rezultat) && Enum.IsDefined(typeof(T), rezultat))
@@ -153,8 +142,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
             }
             else
             {
-                Console.WriteLine("Pogrešan unos. Pokušajte ponovno.");
-                return UcitajEnum<T>(poruka, zadanaVrijednost); // Rekurzivno ponavljanje za ispravan unos
+                return (T)Enum.GetValues(typeof(T)).GetValue(0);
             }
         }
         public static string BoolToYesNo(bool vrijednost)

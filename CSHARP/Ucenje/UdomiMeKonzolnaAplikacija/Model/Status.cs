@@ -13,6 +13,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija.Model
     public class Status : Entitet
     {
         public string Naziv { get; set; } = "";
+        
 
         public Status GetStatusByEnum(StatusEnum statusEnum)
         {
