@@ -20,6 +20,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija.Model
             return new Status
             {
                 Naziv = statusEnum.ToString()  // Pretvaranje StatusEnum u string
+                
             };
         }
 

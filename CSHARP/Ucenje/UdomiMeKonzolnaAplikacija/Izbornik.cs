@@ -18,7 +18,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
 
         public Izbornik()
         {
-            Pomocno.DEV = true;
+            Pomocno.DEV = false;
             ObradaPas = new ObradaPas();
             ObradaUdomitelj = new ObradaUdomitelj();
             ObradaUpit = new ObradaUpit();
@@ -87,7 +87,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
             }
         }
 
-        private void SpremiPodatke()
+        public void SpremiPodatke()
         {
             if (Pomocno.DEV)
             {

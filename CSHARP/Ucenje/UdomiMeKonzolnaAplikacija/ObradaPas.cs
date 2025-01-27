@@ -7,7 +7,7 @@ using Ucenje.UdomiMeKonzolnaAplikacija.Model;
 
 namespace Ucenje.UdomiMeKonzolnaAplikacija
 {
-    internal class ObradaPas:Pas
+    internal class ObradaPas : Pas
     {
 
         public List<Pas> Psi { get; set; }
@@ -85,6 +85,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
             Console.WriteLine("Šifra: " + p.Sifra);
             Console.WriteLine("Broj čipa: " + p.BrojCipa);
             Console.WriteLine("Ime: " + p.Ime);
+            Console.WriteLine("Pasmina: " + p.Pasmina);
             Console.WriteLine("Datum rođenja: " + p.Datum_Rodjenja);
             Console.WriteLine("Spol: " + p.SpolVrsta);
             Console.WriteLine("Veličina: " + p.VelicinaPsa);
@@ -149,6 +150,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
 
                 }
             }
+            PotvrdaUnosa();
             odabrani.DatumPromjene = DateTime.Now;
 
 
@@ -179,15 +181,54 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
                 Sifra = Pomocno.UcitajRasponBroja("Unesite šifru psa: ", 1, 10000),
                 Ime = Pomocno.UcitajString("Unesite ime psa: ", 50, true),
                 BrojCipa = Pomocno.UcitajString("Unesite broj čipa psa: ", 17, false),
+                Pasmina = Pomocno.UcitajString("Unesite pasminu psa: ", 50, false),
                 Datum_Rodjenja = Pomocno.UcitajDatum("Unesite datum rođenja psa: ", false),
                 SpolVrsta = Pomocno.UcitajEnum<Pas.Spol>("Unesi spol (m/ž): "),
                 VelicinaPsa = Pomocno.UcitajEnum<Velicina>("Unesi veličinu (veliki/srednji/mali): "),
                 BojaPsa = Pomocno.UcitajEnum<Boja>("Unesi boju (bijeli, crni, smeđi, šareni): "),
                 MojaPrica = Pomocno.UcitajString("Moja priča: ", 500, true),
-                Kastracija = Pomocno.UcitajBool("Je li pas kastriran/steriliziran? (DA/NE): ","da"),
+                Kastracija = Pomocno.UcitajBool("Je li pas kastriran/steriliziran? (DA/NE): ", "da"),
                 StatusOpis = Pomocno.UcitajEnum<StatusEnum>("Odaberite status (udomljen/rezerviran/slobodan/privremeni smještaj)"),
                 DatumPromjene = DateTime.Now
             });
+            PotvrdaUnosa();
+
+        }
+        public static bool PotvrdaUnosa()
+        {
+            Console.WriteLine("Želite li spremiti promjene? (da/ne)");
+            string potvrdaUnosa = Console.ReadLine().ToLower();
+
+            if (potvrdaUnosa == "da")
+            {
+                Console.WriteLine("------------------------------");
+                Console.WriteLine("Podatci su spremljeni, hvala.");
+                Izbornik izbornik = new Izbornik();
+                izbornik.SpremiPodatke();
+                return true;
+            }
+            else
+            {
+
+                Console.Clear();
+                Console.WriteLine("-------------------------------");
+                Console.WriteLine("Odustali ste od unosa.");
+                Console.WriteLine("-------------------------------");
+                ObradaPas obradaPas = new ObradaPas();
+                obradaPas.ResetirajUnesenePodatke();
+                obradaPas.PrikaziIzbornik();
+                return false;
+            }
+        }
+
+
+        private void ResetirajUnesenePodatke()
+        {
+            if (Psi.Count > 0)
+            {
+                Psi.RemoveAt(Psi.Count - 1);
+            }
         }
     }
 }
+

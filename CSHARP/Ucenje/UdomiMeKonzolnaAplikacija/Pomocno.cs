@@ -150,6 +150,18 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
             return vrijednost ? "da" : "ne";
         }
 
-
+        
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

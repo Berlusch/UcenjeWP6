@@ -25,9 +25,9 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija.Model
 
         public enum Velicina
         {
-            Veliki,
+            Mali,
             Srednji,
-            Mali
+            Veliki
         }
 
         
