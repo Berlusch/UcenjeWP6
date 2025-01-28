@@ -114,7 +114,7 @@ namespace Ucenje.E20KonzolnaAplikacija
             else{
                 // poziv API-u da se javi tko ovo koristi
                 switch (Pomocno.UcitajRasponBroja("1. Šifra\n2. Naziv\n3. Trajanje\n4. Izvodi se od\n" +
-                    "5. Vaučer",1,5))
+                    "5. Vaučer\nOdaberite broj stavke koju želite promijeniti: ", 1,5))
                 {
                     case 1:
                     odabrani.Sifra = Pomocno.UcitajRasponBroja("Unesi šifru smjera", 1, int.MaxValue);
