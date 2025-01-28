@@ -4,9 +4,10 @@ using Ucenje;
 
 
 
+
 //new E21Subota();
 
-//new Ucenje.UdomiMeKonzolnaAplikacija.Izbornik();
+new Ucenje.UdomiMeKonzolnaAplikacija.Izbornik();
 
 //new Ucenje.E20KonzolnaAplikacija.Izbornik();
 
