@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Ucenje.E20KonzolnaAplikacija;
 using Ucenje.UdomiMeKonzolnaAplikacija.Model;
 
+
 namespace Ucenje.UdomiMeKonzolnaAplikacija
 {
     internal class Izbornik
@@ -49,7 +50,9 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
 
         private void PrikaziIzbornik()
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("GLAVNI IZBORNIK");
+            Console.ResetColor();
             Console.WriteLine();
             Console.WriteLine("1. Psi");
             Console.WriteLine("2. Udomitelji");
@@ -108,9 +111,29 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
 
         private void PozdravnaPoruka()
         {
+            string asciiPas = @"
+  / \__
+ (    @\___
+ /         O                                
+/   (_____/
+/_____/   U";
+
+string asciiPasZrcalno = @"
+                        __ / \  
+                    ___/@     ) 
+                    O         \
+                    \_____)   \
+                    U   \_____\ 
+";
+            
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write(asciiPas+asciiPasZrcalno);
+            Console.WriteLine();                     
             Console.WriteLine("*********************************");
             Console.WriteLine("********* UDOMI ME **************");
             Console.WriteLine("*********************************");
+            Console.ResetColor();   
+            Console.WriteLine();
         }
     }
 }
