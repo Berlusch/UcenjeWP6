@@ -1,0 +1,12 @@
+[
+  {
+    "ContainingType": "EdunovaAPP.Controllers.SmjerController",
+    "Method": "Get",
+    "RelativePath": "api/v1/Smjer",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
