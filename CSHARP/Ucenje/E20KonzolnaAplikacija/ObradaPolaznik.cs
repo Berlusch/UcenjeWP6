@@ -123,5 +123,6 @@ namespace Ucenje.E20KonzolnaAplikacija
                 OIB = Pomocno.UcitajString("Unesi OIB polaznika", 50, true)
             });
         }
+
     }
 }

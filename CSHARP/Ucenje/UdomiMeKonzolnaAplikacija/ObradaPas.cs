@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -183,6 +184,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
 
 
 
+
             // gornjih 6 linija igra istu ulogu kao na 93 - 98. Izvući u metodu
 
         }
@@ -191,7 +193,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
         {
             Console.WriteLine("*****************************");
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Psi u aplikaciji: 🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕");
+            Console.WriteLine("Psi u aplikaciji: ");
             Console.ResetColor();
             Console.WriteLine("----------------");
             int rb = 0;
@@ -214,7 +216,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
                 Pasmina = Pomocno.UcitajString("Unesite pasminu psa: ", 50, false),
                 Datum_Rodjenja = Pomocno.UcitajDatum("Unesite datum rođenja psa: ", false),
                 SpolVrsta = Pomocno.UcitajEnum<Pas.Spol>("Unesi spol (m/ž): "),
-                VelicinaPsa = Pomocno.UcitajEnum<Velicina>("Odaberite redni broj veličine psa: 1. veliki\n2. srednji\n3. mali): "),
+                VelicinaPsa = Pomocno.UcitajEnum<Velicina>("Odaberite veličinu psa (veliki, srednji, mali): "),
                 BojaPsa = Pomocno.UcitajEnum<Boja>("Unesi boju (bijeli, crni, smeđi, šareni): "),
                 MojaPrica = Pomocno.UcitajString("Moja priča: ", 500, true),
                 Kastracija = Pomocno.UcitajBool("Je li pas kastriran/steriliziran? (DA/NE): ", "da"),
@@ -222,6 +224,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
                 DatumPromjene = DateTime.Now
             });
             PotvrdaUnosa();
+            
 
         }
         public static bool PotvrdaUnosa()
@@ -233,12 +236,12 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
             {
                 Console.WriteLine("------------------------------");
                 Console.WriteLine("Podatci su spremljeni, hvala.");
-                Console.WriteLine();                            
+                Console.WriteLine();
+                
                 return true;
             }
             else
             {
-
                 Console.Clear();
                 Console.WriteLine("-------------------------------");
                 Console.WriteLine("Odustali ste od unosa.");
@@ -258,6 +261,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
                 Psi.RemoveAt(Psi.Count - 1);
             }
         }
+        
     }
 }
 
