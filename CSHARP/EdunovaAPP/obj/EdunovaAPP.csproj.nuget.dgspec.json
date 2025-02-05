@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Polaznik\\Documents\\GitHub\\UcenjeWP6\\CSHARP\\EdunovaAPP\\EdunovaAPP.csproj": {}
+    "C:\\Users\\Bernarda\\Documents\\GitHub\\UcenjeWP6\\CSHARP\\EdunovaAPP\\EdunovaAPP.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Polaznik\\Documents\\GitHub\\UcenjeWP6\\CSHARP\\EdunovaAPP\\EdunovaAPP.csproj": {
+    "C:\\Users\\Bernarda\\Documents\\GitHub\\UcenjeWP6\\CSHARP\\EdunovaAPP\\EdunovaAPP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Polaznik\\Documents\\GitHub\\UcenjeWP6\\CSHARP\\EdunovaAPP\\EdunovaAPP.csproj",
+        "projectUniqueName": "C:\\Users\\Bernarda\\Documents\\GitHub\\UcenjeWP6\\CSHARP\\EdunovaAPP\\EdunovaAPP.csproj",
         "projectName": "EdunovaAPP",
-        "projectPath": "C:\\Users\\Polaznik\\Documents\\GitHub\\UcenjeWP6\\CSHARP\\EdunovaAPP\\EdunovaAPP.csproj",
-        "packagesPath": "C:\\Users\\Polaznik\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Polaznik\\Documents\\GitHub\\UcenjeWP6\\CSHARP\\EdunovaAPP\\obj\\",
+        "projectPath": "C:\\Users\\Bernarda\\Documents\\GitHub\\UcenjeWP6\\CSHARP\\EdunovaAPP\\EdunovaAPP.csproj",
+        "packagesPath": "C:\\Users\\Bernarda\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bernarda\\Documents\\GitHub\\UcenjeWP6\\CSHARP\\EdunovaAPP\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Polaznik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Bernarda\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -42,7 +42,7 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
         "SdkAnalysisLevel": "9.0.200"
       },
@@ -86,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200-preview.0.24575.35/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200-preview.0.25057.12/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
