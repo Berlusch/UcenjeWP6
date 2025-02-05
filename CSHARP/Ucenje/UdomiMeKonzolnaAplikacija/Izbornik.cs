@@ -19,7 +19,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
 
         public Izbornik()
         {
-            Pomocno.DEV = false;
+            Pomocno.DEV = true;
             ObradaPas = new ObradaPas();
             ObradaUdomitelj = new ObradaUdomitelj();
             ObradaUpit = new ObradaUpit();
@@ -47,6 +47,28 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
             }
 
         }
+        public static bool PotvrdaUnosa()
+        {
+            Console.WriteLine("Želite li spremiti promjene? (da/ne)");
+            string potvrdaUnosa = Console.ReadLine().ToLower();
+
+            if (potvrdaUnosa == "da")
+            {
+                Console.WriteLine("------------------------------");
+                Console.WriteLine("Podatci su spremljeni, hvala.");
+                Console.WriteLine();
+
+                return true;
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("-------------------------------");
+                Console.WriteLine("Odustali ste od unosa.");
+                Console.WriteLine("-------------------------------");
+                return false;
+            }
+        }
 
         private void PrikaziIzbornik()
         {
@@ -73,39 +95,44 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
                     ObradaPas.PrikaziIzbornik();
                     PrikaziIzbornik();
                     break;
-                /*case 2:
+                case 2:
                     Console.Clear();
                     ObradaUdomitelj.PrikaziIzbornik();
                     PrikaziIzbornik();
                     break;
-                case 3:
+                /*case 3:
                     Console.Clear();
                     ObradaUpit.PrikaziIzbornik();
                     PrikaziIzbornik();
                     break;*/
-                case 4:
-                    Console.WriteLine("Hvala na korištenju aplikacije, doviđenja!");
+                case 4:                    
                     SpremiPodatke();
+                    Console.WriteLine("Hvala na korištenju aplikacije, doviđenja!");
                     break;
             }
         }
 
         public void SpremiPodatke()
         {
+            
+            if (!PotvrdaUnosa())
+            {
+                
+                return;
+            }
+
+            // Ako je u DEV načinu rada, ne spremamo podatke
             if (Pomocno.DEV)
             {
                 return;
             }
 
-            //Console.WriteLine(JsonConvert.SerializeObject(ObradaPas.Psi));
-            else
-            {
-                string docPath = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "GitHub");
+            
+            string docPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "GitHub");
 
-                StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "psi.json"));
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "psi.json")))
+            {
                 outputFile.WriteLine(JsonConvert.SerializeObject(ObradaPas.Psi));
-                outputFile.Close();
             }
         }
 

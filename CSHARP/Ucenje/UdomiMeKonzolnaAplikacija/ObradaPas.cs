@@ -120,8 +120,9 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
             PrikaziPse();
             var odabrani = Psi[Pomocno.UcitajRasponBroja("Odaberi redni broj psa za promjenu",
                 1, Psi.Count) - 1];
+            int indeksOdabranog = Psi.IndexOf(odabrani);
 
-            if (Pomocno.UcitajRasponBroja("1. Promjena svih podataka\n2. Pojedinačna promjena", 1, 2) == 1)
+            if (Pomocno.UcitajRasponBroja("1. Promjena svih podataka\n2. Pojedinačna promjena\n\nOdaberite broj tipa promjene: ", 1, 2) == 1)
             {
                 // poziv API-u da se javi tko ovo koristi
                 odabrani.Sifra = Pomocno.UcitajRasponBroja("Unesite šifru psa: ", 1, 10000);
@@ -178,7 +179,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
 
                 }
             }
-            PotvrdaUnosa();
+            
             odabrani.DatumPromjene = DateTime.Now;
 
 
@@ -223,44 +224,21 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
                 StatusOpis = Pomocno.UcitajEnum<StatusEnum>("Odaberite status (udomljen/rezerviran/slobodan/privremeni smještaj)"),
                 DatumPromjene = DateTime.Now
             });
-            PotvrdaUnosa();
+            
             
 
         }
-        public static bool PotvrdaUnosa()
+        
+
+
+        /*private void ResetirajUnesenePodatke()
         {
-            Console.WriteLine("Želite li spremiti promjene? (da/ne)");
-            string potvrdaUnosa = Console.ReadLine().ToLower();
-
-            if (potvrdaUnosa == "da")
-            {
-                Console.WriteLine("------------------------------");
-                Console.WriteLine("Podatci su spremljeni, hvala.");
-                Console.WriteLine();
-                
-                return true;
-            }
-            else
-            {
-                Console.Clear();
-                Console.WriteLine("-------------------------------");
-                Console.WriteLine("Odustali ste od unosa.");
-                Console.WriteLine("-------------------------------");
-                ObradaPas obradaPas = new ObradaPas();
-                obradaPas.ResetirajUnesenePodatke();
-                obradaPas.PrikaziIzbornik();
-                return false;
-            }
-        }
-
-
-        private void ResetirajUnesenePodatke()
-        {
+            
             if (Psi.Count > 0)
             {
-                Psi.RemoveAt(Psi.Count - 1);
+                Psi.RemoveAt(Psi.Count-1);
             }
-        }
+        }*/
         
     }
 }
