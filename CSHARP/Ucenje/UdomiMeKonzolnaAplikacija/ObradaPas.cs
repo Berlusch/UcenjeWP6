@@ -85,7 +85,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
                 Pomocno.UcitajRasponBroja("Odaberi redni broj psa za detalje", 1, Psi.Count) - 1
                 ];
             Console.WriteLine("--------------------");
-            Console.WriteLine("Detalji psa: ");
+            Console.WriteLine("Detalji psa: {0}", p.Ime);
             Console.WriteLine();
             Console.WriteLine("Šifra: " + p.Sifra);
             Console.WriteLine("Broj čipa: " + p.BrojCipa);
@@ -140,7 +140,9 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
             else
             {
                 Console.WriteLine();
-                Console.WriteLine("Promjena podataka za psa {0}", odabrani.Ime);
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Promjena podataka za psa: {0}", odabrani.Ime);
+                Console.ResetColor();
                 Console.WriteLine("-------------------------------");
                 // poziv API-u da se javi tko ovo koristi
                 switch (Pomocno.UcitajRasponBroja("1. Šifra\n2. Ime\n3. Broj čipa\n4. Datum rođenja\n5. Spol\n6. Veličina\n7. Boja\n8. Moja priča\n9. Kastracija\n10. Status\n" +

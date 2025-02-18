@@ -9,7 +9,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
     internal class Pomocno
     {
 
-        public static bool DEV = true;
+        public static bool DEV = false;
 
         internal static bool UcitajBool(string poruka, string trueValue)
         {

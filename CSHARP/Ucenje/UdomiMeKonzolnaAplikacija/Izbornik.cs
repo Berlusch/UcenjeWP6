@@ -19,7 +19,7 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
 
         public Izbornik()
         {
-            Pomocno.DEV = true;
+            Pomocno.DEV = false;
             ObradaPas = new ObradaPas();
             ObradaUdomitelj = new ObradaUdomitelj();
             ObradaUpit = new ObradaUpit();
@@ -87,9 +87,11 @@ namespace Ucenje.UdomiMeKonzolnaAplikacija
         {
             Console.WriteLine("----------------------------------------");
             Console.WriteLine();
-
+            
             switch (Pomocno.UcitajRasponBroja("Odaberite stavku izbornika", 1, 4))
+
             {
+                
                 case 1:
                     Console.Clear();
                     ObradaPas.PrikaziIzbornik();
